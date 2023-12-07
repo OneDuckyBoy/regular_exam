@@ -1,0 +1,45 @@
+.container-category-selector {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "categories"
+    "line"
+    "all-categories"
+    "controllers"
+    "sensors"
+    "LEDs"
+    "Displays"
+    "Cables-and-others";
+}
+
+.categories { grid-area: categories; }
+.line { grid-area: line; }
+
+
+.all-categories { grid-area: all-categories; }
+
+.controllers { grid-area: controllers; }
+
+.sensors { grid-area: sensors; }
+
+.LEDs { grid-area: LEDs; }
+
+.Displays { grid-area: Displays; }
+
+.Cables-and-others { grid-area: Cables-and-others; }
+a{
+    color: white;
+}a:hover{
+     color: white;
+ }
+hr {
+
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}

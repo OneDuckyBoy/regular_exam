@@ -9,5 +9,9 @@ class RegularExamApplicationTests {
     @Test
     void contextLoads() {
     }
+    @Test
+    void testThatTheProgramLoads(){
+
+    }
 
 }

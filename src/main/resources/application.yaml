@@ -1,0 +1,62 @@
+
+exam:
+  remember.me.key: ${REMEBER_ME_KEY:topsecret}
+spring:
+  jpa:
+    properties:
+      hibernate:
+
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: 'TRUE'
+    hibernate:
+      ddl-auto: update
+    open-in-view: 'false'
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: 'true'
+  datasource:
+
+    driverClassName: com.mysql.cj.jdbc.Driver
+    password: ${MYSQL_PASSWORD}
+    username: ${MYSQL_USER}
+    url: jdbc:mysql://localhost:3306/regular_exam_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+#    url: jdbc:mysql://db.mysql.database.azure.com:3306/groovy_demo1?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+logging:
+  level:
+    org:
+      springframework.security: trace
+      org:
+        springframework:
+          security:
+            web:
+              access: DEBUG
+      hibernate:
+
+        type:
+          descriptor: TRACE
+
+        SQL: DEBUG
+
+      nodeValue: WARN
+    blog: WARN
+server:
+  port: 8080
+
+
+#mail:
+#  mailName: "groovyDemo@example.com"
+#  host: localhost
+#  port: 1025
+#  username: ${MAIL_USER:softuni}
+#  password: ${MAIL_PASSWORD:softuni}
+
+
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: "*"
