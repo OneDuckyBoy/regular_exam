@@ -1,14 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head th:replace="~{fragments/head}">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+  <meta charset="UTF-8">
+  <title>Arduino marketplace</title>
+  <link rel="stylesheet" th:href="@{/css/reset-css.css}"/>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+  <script th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  <script src="https://kit.fontawesome.com/734a4e4265.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/Item.css}"/>
+  <script th:src="@{/js/Heart.js}"></script>
+
 </head>
 
 
 <body>
+<style>
+  .item-container{
+    flex-direction: column;}
+</style>
+<nav th:replace="~{fragments/navbar}"></nav>
 
 
-<div>
-  <nav th:replace="~{fragments/navbar}"></nav>
 
 
   <div class="container">
@@ -20,15 +34,17 @@
 
 
       </div>
-        <div class="col-md-1">
-        </div>
+<!--      <div class="col-md-1">-->
+<!--        </div>-->
       <div class="col-md-9 center " style="margin: 20px 0px"    >
-
-
+        <p>test</p>
 
         <div class="item-container container-for-items" style="width: 250px;
   display:flex;
-  align-items:center;background-color: white;padding-top: 10px; border-radius: 4px">
+  align-items:center;
+  background-color: white;
+  padding-top: 10px;
+   border-radius: 4px">
           <img  src="https://i.postimg.cc/8CmBZH5N/shoes.webp" alt="img">
           <p class="name">ime ime ime </p>
           <div class="item-text">
@@ -38,23 +54,23 @@
             <!--   <button> dobavi v kolichka</button>   -->
           </div>
         </div>
-        <div class="item-container container-for-items" style="">
-          <img  src="https://i.postimg.cc/8CmBZH5N/shoes.webp" alt="img">
-          <p class="name">ime ime ime </p>
-          <div class="item-text">
-            <p>5 leva   </p>
-            <button class="button-2" role="button">Add to cart</button>
-            <span ><i class="fa fa-heart-o" aria-hidden="true heart" ></i> </span>
-          </div>
-        </div>
-        <div class="item-container container-for-items" style="">
-          <img  src="https://i.postimg.cc/8CmBZH5N/shoes.webp" alt="img">
-          <p class="name">ime ime ime </p>
-          <div class="item-text">
-            <p>5 leva   </p>
-            <button class="button-2" role="button">Add to cart</button>
-            <span ><i class="fa fa-heart-o" aria-hidden="true heart" ></i> </span>
-          </div>
+<!--        <div class="item-container container-for-items" style="">-->
+<!--          <img  src="https://i.postimg.cc/8CmBZH5N/shoes.webp" alt="img">-->
+<!--          <p class="name">ime ime ime </p>-->
+<!--          <div class="item-text">-->
+<!--            <p>5 leva   </p>-->
+<!--            <button class="button-2" role="button">Add to cart</button>-->
+<!--            <span ><i class="fa fa-heart-o" aria-hidden="true heart" ></i> </span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="item-container container-for-items" style="">-->
+<!--          <img  src="https://i.postimg.cc/8CmBZH5N/shoes.webp" alt="img">-->
+<!--          <p class="name">ime ime ime </p>-->
+<!--          <div class="item-text">-->
+<!--            <p>5 leva   </p>-->
+<!--            <button class="button-2" role="button">Add to cart</button>-->
+<!--            <span ><i class="fa fa-heart-o" aria-hidden="true heart" ></i> </span>-->
+<!--          </div>-->
         </div>
 <!--        todo-->
 
@@ -63,6 +79,5 @@
     </div>
   </div>
 
-</div>
 </body>
 </html>

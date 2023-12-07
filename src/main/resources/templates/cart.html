@@ -3,13 +3,36 @@
 <head th:replace="~{fragments/head}">
 </head>
 <body>
-<div>
-    <nav th:replace="~{fragments/navbar}"></nav>
-
-    <div class="container">
 
 
+    <div id="cart-container" class="cart-container">
+        <div class="cart-checkout-info text-light">
 
+            <div class="container-category-selector" style="display: flex; flex-direction: column; gap: 100px;">
+                <div class="cart-checkout-text"><h1 class="text-light">Items in the cart</h1><br><hr></div>
+                <div class="cart-checkout-product-price text-light">
+                   <h1> Total item price: 24 lv.</h1>
+                </div>
+                <div class="cart-checkout-delivery-price">
+                    <h1>delivery price: 5lv.</h1>
+                </div>
+                <div class="cart-checkout-next-button">
+                    <a href="/"><h1 style="color: white">next page</h1></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-text"><h1 class="text-light">Items in the cart</h1><br><hr></div>
+        <div class="navbar"><nav th:replace="~{fragments/navbar}"></nav></div>
     </div>
+
+
 </body>
+<style>
+
+
+
+
+</style>
 </html>
