@@ -38,6 +38,13 @@ public class HomeController {
     public String user_profile(){
         return "user_profile";
     }
+    @GetMapping("/item")
+    public String item(){
+        return "Item";
+    }@GetMapping("/add-item")
+    public String addItem(){
+        return "add-item";
+    }
 
 
 }

@@ -1,0 +1,44 @@
+
+
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+  <meta charset="UTF-8">
+  <title>Arduino marketplace</title>
+  <link rel="stylesheet" th:href="@{/css/reset-css.css}"/>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/item-page.css}"/>
+  <script th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  <script src="https://kit.fontawesome.com/734a4e4265.js" crossorigin="anonymous"></script>
+  <script th:src="@{/js/item-page.js}"></script>
+
+
+</head>
+<body>
+<div class="store-container">
+  <div class="nav-bar"><nav th:replace="~{fragments/navbar}"></nav></div>
+  <div class="image"><img style="margin-top: 60px;margin-left: 50px;width: 500px;border-radius: 10px" src="images/ducki the duck.jpg" alt="">
+  </div>
+  <div class="name-and-desc text-light" style="margin-top: 100px">
+    <h1>ime ime ime</h1>
+    <hr style="background-color: white">
+<!--    <br>-->
+    <h3 style=" max-width:400px;
+    word-wrap:break-word;">desc asasdasdasdasdasdasdasdasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</h3>
+
+  </div>
+  <div class="price-and-buttons text-light">
+    <div style="margin-top: 100px; margin-left: 50px;display: flex; flex-direction: column ;padding-right: 50px; padding-bottom: 50px;gap: 50px">
+    <h1 >Price 5 lv
+      <hr style="background-color: white">
+      <button class="button add-to-cart" role="button" >Add to cart</button>
+      <button class="button add-to-liked" role="button">Add to liked</button>
+    </h1>
+    </div>
+  </div>
+</div>
+</body>
+</html>

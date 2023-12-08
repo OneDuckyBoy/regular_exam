@@ -17,10 +17,10 @@ window.onload = function() {
     addItem(1)
     addItem(1)
     addMoreItems(1)
-    addItem(2)
-    addItem(2)
-    addItem(2)
-    addMoreItems(2)
+    // addItem(2)
+    // addItem(2)
+    // addItem(2)
+    // addMoreItems(2)
     // addItem(2)
 
     function addMoreItems(num){
