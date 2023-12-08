@@ -1,5 +1,8 @@
+
+
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="UTF-8">
     <title>Arduino marketplace</title>
@@ -8,30 +11,27 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/category.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/liked.css}"/>
+
 
 
 
     <script th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
     <script src="https://kit.fontawesome.com/734a4e4265.js" crossorigin="anonymous"></script>
-
-<!--    <link rel="stylesheet" type="text/css" th:href="@{/css/Item.css}"/>-->
-<!--    <script th:src="@{/js/store.js}"></script>-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Item.css}"/>
+    <script th:src="@{/js/liked.js}"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/store.css}"/>
 
 </head>
 <body>
 
-
-
-
-
-<div class="navbar" ><nav th:replace="~{fragments/navbar}"></nav></div>
-<div style="display: flex;flex-direction: row; gap: 150px;margin: 100px 200px ">
-    <div class="column shop-categories " >
-
+<div class="store-container ">
+    <div class="navbar"><nav th:replace="~{fragments/navbar}"></nav></div>
+    <div class="shop-categories " >
+        <br><br><br>
         <div class="container-category-selector text-light">
-            <div class="categories" > <h1>categories</h1></div>
+            <div class="categories" > <h1>Liked items</h1></div>
             <div class="line"><p><hr/></p> </div>
             <div class="all-categories"><a href=""> all categories</a></div>
             <div class="controllers"><a href=""> controllers</a></div>
@@ -41,22 +41,24 @@
             <div class="Cables-and-others"><a href="">Cables and others</a></div>
         </div>
     </div>
-    <div class="column" style="display: inline; font-size: 60px;background-color: #d8ecf3; border-radius: 20px;margin: 20px 0px; width: 1500px;padding: 50px">
-        <h1 style="display: block; font-size: 60px;background-color: #d8ecf3; border-radius: 20px;margin: 20px 0px">WELCOME TO MY SITE</h1>
-        <br>
-        <h2 align="center"><a style="color: #212529" th:href="@{/login}">please log in to continue</a></h2>
-        <h2 align="center"><a style="color: #212529" th:href="@{/register}">or register if you don't have an account</a></h2>
+    <div class="shop-items text-light"><div class="items">
+
+    </div>
+
     </div>
 </div>
 
 
+<div class="store-container ">
+    <div class="navbar"><nav th:replace="~{fragments/navbar}"></nav></div>
+
+    <div class="shop-categories "  style="margin-top: 60px">
+        <img style="margin-top: 60px;margin-left: 50px;width: 300px;border-radius: 1000px" src="images/ducki the duck.jpg" alt="">
+        <div class="username text-light"><th:block sec:authentication="name" >asd</th:block></div>
+    </div>
+    <div class="shop-items " style="margin-top: 60px"><div class="items"></div>
+
+    </div>
+</div>
 </body>
 </html>
-
-
-
-<div >
-
-
-
-</div>

@@ -1,15 +1,6 @@
 window.onload = function() {
     let container = document.getElementsByClassName('items')[0];
 // container.innerHTML = 'hi';
-
-
-
-
-
-
-
-
-
     addItem()
     addItem()
     addItem()
@@ -60,15 +51,18 @@ window.onload = function() {
         likeContainer.appendChild(heart);
         heart.classList.add('button-2');
         heart.role = 'button';
-        heart.innerHTML = 'Add to Liked <i class="fa fa-heart-o fa-lg" aria-hidden="true" ></i>';
+        heart.innerHTML = 'Remove from Liked <i class=" fa fa-solid fa-xmark fa-lg " aria-hidden="true" ></i>';
         heart.addEventListener('click', () => {
-            if (heart.classList.contains("liked")) {
-                heart.innerHTML = 'Add to Liked <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>';
-                heart.classList.remove("liked");
-            } else {
-                heart.innerHTML = 'Add to Liked <i class="fa fa-heart fa-lg" aria-hidden="true"></i>';
-                heart.classList.add("liked");
-            }
+
+            // todo
+
+            // if (heart.classList.contains("liked")) {
+            //     heart.innerHTML = 'Remove from Liked <i class="fa fa-solid fa-xmark fa-lg" aria-hidden="true"></i>';
+            //     heart.classList.remove("liked");
+            // } else {
+            //     heart.innerHTML = 'Remove from Liked <i class="fa fa-solid fa-xmark fa-lg" aria-hidden="true"></i>';
+            //     heart.classList.add("liked");
+            // }
         });
     }
 }

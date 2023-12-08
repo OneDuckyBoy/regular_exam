@@ -63,7 +63,7 @@ public class SecurityConfiguration {
               // the URL where we should POST something in order to perform the logout
               .logoutUrl("/logout")
               // where to go when logged out?
-              .logoutSuccessUrl("/index")
+              .logoutSuccessUrl("/")
               // invalidate the HTTP session
               .invalidateHttpSession(true);
         }

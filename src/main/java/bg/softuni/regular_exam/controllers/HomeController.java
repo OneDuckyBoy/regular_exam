@@ -29,5 +29,10 @@ public class HomeController {
         return "thanks_for_purchase";
     }
 
+    @GetMapping("/liked")
+    public String liked(){
+        return "liked";
+    }
+
 
 }

@@ -1,29 +1,62 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head th:replace="~{fragments/head}">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+  <meta charset="UTF-8">
+  <title>Arduino marketplace</title>
+  <link rel="stylesheet" th:href="@{/css/reset-css.css}"/>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+
+  <link rel="stylesheet" type="text/css" th:href="@{/css/category.css}"/>
+
+
+
+  <script th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  <script src="https://kit.fontawesome.com/734a4e4265.js" crossorigin="anonymous"></script>
+
+  <!--    <link rel="stylesheet" type="text/css" th:href="@{/css/Item.css}"/>-->
+  <!--    <script th:src="@{/js/store.js}"></script>-->
+  <link rel="stylesheet" type="text/css" th:href="@{/css/store.css}"/>
+
 </head>
 <body>
-<div>
-  <nav th:replace="~{fragments/navbar}"></nav>
 
-  <div class="container">
-    <div class="row ">
 
-      <div class="col-md-12 " style="background-color: #d8ecf3; border-radius: 20px;margin: 20px 0; width: 1000px " >
 
-        <div >
 
-          <h1 style="display: block; width: 1000px; font-size: 60px" >WELCOME TO MY SITE</h1>
-          <br>
-          <h2 align="center"><a style="color: #212529" th:href="@{/login}">please log in to continue</a></h2>
-          <h2 align="center"><a style="color: #212529" th:href="@{/register}">or register if you don't have an account</a></h2>
 
-        </div>
+<div class="navbar" ><nav th:replace="~{fragments/navbar}"></nav></div>
+<div style="display: flex;flex-direction: row; gap: 150px;margin: 100px 200px ">
+  <div class="column shop-categories " >
 
-      </div>
+    <div class="container-category-selector text-light">
+      <div class="categories" > <h1>categories</h1></div>
+      <div class="line"><p><hr/></p> </div>
+      <div class="all-categories"><a href=""> all categories</a></div>
+      <div class="controllers"><a href=""> controllers</a></div>
+      <div class="sensors"><a href=""> sensors</a></div>
+      <div class="LEDs"><a href="">LEDs</a></div>
+      <div class="Displays"><a href="">Displays</a></div>
+      <div class="Cables-and-others"><a href="">Cables and others</a></div>
     </div>
-
+  </div>
+  <div class="column" style="display: inline; font-size: 60px;background-color: #d8ecf3; border-radius: 20px;margin: 20px 0px; width: 1500px;padding: 50px">
+    <h1 style="display: block; font-size: 60px;background-color: #d8ecf3; border-radius: 20px;margin: 20px 0px">Thank you for your purchase</h1>
+    <br>
+    <h2 align="center"><a style="color: #212529" th:href="@{/}">go to store page</a></h2>
+    <h2 align="center"><a style="color: #212529" th:href="@{/news}">or go to the news</a></h2>
   </div>
 </div>
+
+
 </body>
 </html>
+
+
+
+<div >
+
+
+
+</div>
