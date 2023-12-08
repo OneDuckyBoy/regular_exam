@@ -41,9 +41,27 @@ public class HomeController {
     @GetMapping("/item")
     public String item(){
         return "Item";
-    }@GetMapping("/add-item")
+    }
+    @GetMapping("/add-item")
+
     public String addItem(){
         return "add-item";
+    }
+    @GetMapping("/news")
+
+    public String news(){
+        return "news";
+    }
+    @GetMapping("/add-news")
+
+    public String addNews(){
+        return "add-news";
+    }
+
+    @GetMapping("/news-page")
+
+    public String newsPage(){
+        return "news-page";
     }
 
 
