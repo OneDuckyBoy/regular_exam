@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/head}">
+</head>
+<body>
+<div>
+  <nav th:replace="~{fragments/navbar}"></nav>
+
+  <div class="container">
+    <div class="row ">
+
+      <div class="col-md-12 " style="background-color: #d8ecf3; border-radius: 20px;margin: 20px 0; width: 1000px " >
+
+        <div >
+
+          <h1 style="display: block; width: 1000px; font-size: 60px" >WELCOME TO MY SITE</h1>
+          <br>
+          <h2 align="center"><a style="color: #212529" th:href="@{/login}">please log in to continue</a></h2>
+          <h2 align="center"><a style="color: #212529" th:href="@{/register}">or register if you don't have an account</a></h2>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

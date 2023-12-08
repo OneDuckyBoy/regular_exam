@@ -11,7 +11,7 @@
     gap: 10px 0px;
     grid-auto-flow: row;
     grid-template-areas:
-      "image name price add-to-cart";
+      "image name price counter add-to-cart";
 }
 
 .ImageContainer { grid-area: image;}
@@ -28,8 +28,31 @@
     text-align: center;
     font-size:40px;
 }
+.counter { grid-area:counter;
+    position: relative;}
 .price { grid-area: price; }
 
+.ImageContainer { grid-area: image;}
+.ImageContainer img{ height:150px;
+    padding:10px;
+}
+
+.name { grid-area: name; }
+/* .name p{
+  text-align: center;
+  font-size:30px;
+} */
+.text {
+    text-align: center;
+    font-size:40px;
+}
+.price { grid-area: price; }
+.center {
+    !important;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+}
 .buttons-container {
     grid-area: add-to-cart;
     display: grid;
@@ -127,3 +150,164 @@ hr{
 .cart-checkout-delivery-price { grid-area: cart-checkout-delivery-price; }
 
 .cart-checkout-next-button { grid-area: cart-checkout-next-button; }
+
+
+.ItemContainer {
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    width:1000px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 170px;
+    grid-auto-columns: 1fr;
+    gap: 10px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "image name price counter add-to-cart";
+}
+
+.ImageContainer { grid-area: image;}
+.ImageContainer img{ height:150px;
+    padding:10px;
+}
+
+.name { grid-area: name;
+    margin-top: 15px; }
+/* .name p{
+  text-align: center;
+  font-size:30px;
+} */
+.text {
+    text-align: center;
+    font-size:40px;
+}
+.counter { grid-area:counter; }
+.price { grid-area: price;
+
+    margin-top: 30px;
+padding-top: 20px;}
+
+.buttons-container {
+    grid-area: add-to-cart;
+    display: grid;
+    place-items: center;
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+.button-2 {
+    background-color: rgba(51, 51, 51, 0.05);
+    border-radius: 8px;
+    border-width: 0;
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    /* margin: 0; */
+    padding: 20px 12px;
+    text-align: center;
+    transition: all 200ms;
+    vertical-align: baseline;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.like-btn{
+    margin-top: -30px;
+}
+.fa-heart-o {
+    color: red;
+    cursor: pointer;
+}
+.fa-heart {
+    color: red;
+    cursor: pointer;
+}
+.image{
+    border-radius: 20px;
+}
+
+#test-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+
+/* counter */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700,300);
+
+/* use only the available space inside the 400x400 frame */
+
+
+
+.counter-center {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.counter-container {
+    display: flex;
+    border: 4px solid #404040;
+    background: #d8ecf3;
+    border-radius: 10rem;
+    width: 100%;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+
+}
+
+.count {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+.counter-container .col-1 {
+    width: 45%;
+}
+
+.counter-container .col-2 {
+    width: 25%;
+}
+
+.counter-container .col > button, .counter-number {
+    width: 40px;
+    margin: 0px;
+    /* margin-left: -10px; */
+    background: #d8ecf3;
+    border: 0px;
+    color: black !important;
+    text-align: center;
+}
+
+.counter-button {
+    font-family: sans-serif;
+    font-size: 40px;
+    border-color: #d8ecf3;
+    background-color: #d8ecf3;
+    background: #d8ecf3;
+    border-color: #d8ecf3;
+    border-style: solid;
+}
+
+.minus-btn,.plus-btn {
+    color: black;
+    user-select: none;
+    outline: none;
+}
+

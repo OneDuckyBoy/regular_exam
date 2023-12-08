@@ -50,6 +50,57 @@ window.onload = function() {
         priceContainer.appendChild(price);
         ItemContainer.appendChild(priceContainer);
 
+
+        let counterContainer = document.createElement("div");
+        ItemContainer.appendChild(counterContainer);
+        counterContainer.classList.add("counter");
+        counterContainer.classList.add("text");
+        // counterContainer.classList.add("center");
+        // counterContainer.textContent = "Hi";
+
+        //<div class="counter-center counter-container">
+        let counterCenter = document.createElement("div");
+        counterContainer.appendChild(counterCenter);
+        counterCenter.classList.add("counter-center");
+        counterCenter.classList.add("counter-container");
+
+        let minusBtn = document.createElement("button");
+        minusBtn.classList.add("counter-button");
+        minusBtn.classList.add("minus-btn");
+        counterCenter.appendChild(minusBtn);
+        minusBtn.textContent = "-";
+
+        let counterContainerNumber = document.createElement("div");
+        // counterContainerNumber.classList.add("counter-number");
+        counterCenter.appendChild(counterContainerNumber);
+
+        let counterNumber = document.createElement("p");
+        counterContainerNumber.appendChild(counterNumber);
+        counterNumber.classList.add("counter-number");
+        counterNumber.innerHTML = "0";
+
+
+        let plusBtn = document.createElement("button");
+        plusBtn.classList.add("counter-button");
+        plusBtn.classList.add("plus-btn");
+        counterCenter.appendChild(plusBtn);
+        plusBtn.textContent = "+";
+
+        let countNum = 1;
+        counterNumber.innerHTML = countNum;
+
+        minusBtn.addEventListener("click", () => {
+            if(countNum>0){
+                countNum -= 1;}
+            counterNumber.innerHTML = countNum;
+        });
+
+        plusBtn.addEventListener("click", () => {
+            countNum += 1;
+            counterNumber.innerHTML = countNum;
+        });
+
+
         let buttonsContainer = document.createElement("div");
         ItemContainer.appendChild(buttonsContainer);
         buttonsContainer.classList.add("buttons-container");
