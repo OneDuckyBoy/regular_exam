@@ -55,6 +55,25 @@
               </p>
               </a>
           </li>
+
+          </li><li sec:authorize="isAuthenticated()" class="nav-item">
+              <a class="nav-link" href="/news"><i class="fa-solid fa-newspaper"></i></a>
+              <a class="nav-link" href="/news">
+              <p class="text-light">
+                  news
+              </p>
+              </a>
+          </li>
+
+
+          </li><li sec:authorize="isAuthenticated()&&hasRole('ADMIN')" class="nav-item">
+              <a class="nav-link" href="/add-news"><i class="fa-solid fa-square-plus"></i></a>
+              <a class="nav-link" href="/add-news">
+              <p class="text-light">
+                  add news
+              </p>
+              </a>
+          </li>
 <!--          <li class="nav-item">-->
 <!--              newspaper-->
 <!--              <a class="nav-link" href="/"><i class="fa-solid fa-newspaper"></i></a>-->
