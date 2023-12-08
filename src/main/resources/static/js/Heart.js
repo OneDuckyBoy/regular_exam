@@ -1,4 +1,4 @@
-let heart = document.getElementsByClassName("heart");
+// let heart = document.getElementsByClassName("heart");
 // heart.addEventListener('click', () =>{
 //     if(heart.classList.contains("liked")){
 //         heart.innerHTML='<i class="fa fa-heart-o" aria-hidden="true"></i>';
@@ -8,3 +8,4 @@ let heart = document.getElementsByClassName("heart");
 //         heart.classList.add("liked");
 //     }
 // });
+

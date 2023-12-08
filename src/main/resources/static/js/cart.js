@@ -1,5 +1,10 @@
+let totalPrice;
+
 let cartContainer;
 window.onload = function() {
+    let beginningPrice=5;
+     totalPrice = document.getElementById("total-price")
+   // totalPrice.innerHTML= parseInt(totalPrice.textContent)+5;
     cartContainer = document.getElementById('cart-container');
     // console.log(cartContainer);
 
@@ -46,7 +51,8 @@ window.onload = function() {
         priceContainer.classList.add("price");
         priceContainer.classList.add("text");
         let price = document.createElement("p");
-        price.innerHTML = 5+" leva";
+        let pricePerItem = 6;
+        price.innerHTML = pricePerItem+" leva";
         priceContainer.appendChild(price);
         ItemContainer.appendChild(priceContainer);
 
@@ -91,16 +97,21 @@ window.onload = function() {
 
         minusBtn.addEventListener("click", () => {
             if(countNum>0){
+                totalPrice.innerHTML= parseInt(totalPrice.textContent)-pricePerItem;
+
                 countNum -= 1;}
             counterNumber.innerHTML = countNum;
         });
 
         plusBtn.addEventListener("click", () => {
             countNum += 1;
+            totalPrice.innerHTML= parseInt(totalPrice.textContent)+pricePerItem;
             counterNumber.innerHTML = countNum;
         });
 
-
+        beginningPrice+=pricePerItem*parseInt(counterNumber.innerHTML);
+        totalPrice.innerHTML=beginningPrice
+        console.log(beginningPrice);
         let buttonsContainer = document.createElement("div");
         ItemContainer.appendChild(buttonsContainer);
         buttonsContainer.classList.add("buttons-container");
