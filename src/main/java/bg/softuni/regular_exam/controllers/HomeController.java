@@ -34,5 +34,10 @@ public class HomeController {
         return "liked";
     }
 
+    @GetMapping("/user_profile")
+    public String user_profile(){
+        return "user_profile";
+    }
+
 
 }

@@ -1,10 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Arduino marketplace</title>
+    <link rel="stylesheet" th:href="@{/css/reset-css.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/category.css}"/>
+
+
+
+    <script th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="https://kit.fontawesome.com/734a4e4265.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Item.css}"/>
+    <script th:src="@{/js/user_profile.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/store.css}"/>
+
 </head>
+
+
 <body>
+
+
+<div class="store-container ">
+    <div class="navbar"><nav th:replace="~{fragments/navbar}"></nav></div>
+
+    <div class="shop-categories " >
+        <br><br><br>
+        <div class="container-category-selector text-light">
+            <div class="categories" > <h1>categories</h1></div>
+            <div class="line"><p><hr/></p> </div>
+            <div class="all-categories"><a href=""> all categories</a></div>
+            <div class="controllers"><a href=""> controllers</a></div>
+            <div class="sensors"><a href=""> sensors</a></div>
+            <div class="LEDs"><a href="">LEDs</a></div>
+            <div class="Displays"><a href="">Displays</a></div>
+            <div class="Cables-and-others"><a href="">Cables and others</a></div>
+        </div>
+    </div>
+    <div class="shop-items "style="margin-top: 60px"><h1 class="text-light">test
+        <hr></h1> <div class="items" style="margin-top: -100px">
+
+    </div>
+        <h1 class="text-light">test
+            <hr></h1><div class="items" style="margin-top: -100px">
+
+    </div>
+        <h1 class="text-light">test
+            <hr></h1><div class="items" style="margin-top: -100px">
+
+    </div>
+
+    </div>
+</div>
+
+<!--  </div>-->
 
 </body>
 </html>
