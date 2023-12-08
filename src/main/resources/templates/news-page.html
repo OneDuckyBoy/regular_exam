@@ -13,11 +13,20 @@
     <script th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
     <script src="https://kit.fontawesome.com/734a4e4265.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/news.css}"/>
-    <script th:src="@{/js/news.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/news-page.css}"/>
+    <script th:src="@{/js/news-page.js}"></script>
 
 </head>
 <body>
+
+<div class="news-page-container text-light">
+    <div class="navbar"><nav th:replace="~{fragments/navbar}"></nav></div>
+    <div class="news-name "><h1>Big News: Shoes are trendy now!</h1>
+        <hr>
+    </div>
+    <div class="news-picture"><img src="https://i.postimg.cc/8CmBZH5N/shoes.webp" alt="img"></div>
+    <div class="news-desc"><p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor in labore laudantium nisi quae quia reprehenderit tempore temporibus. Dolor, facilis natus optio placeat reiciendis rem reprehenderit sunt suscipit tempore voluptatum.</p></div>
+</div>
 
 </body>
 </html>
