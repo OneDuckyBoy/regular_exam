@@ -10,11 +10,11 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.*;
 
 
-@FieldMatch(
-        first = "password",
-        second = "confirmPassword",
-        message = "Passwords should match."
-)
+//@FieldMatch(
+//        first = "password",
+//        second = "confirmPassword",
+//        message = "Passwords should match."
+//)
 
 public class UserRegisterDTO {
 

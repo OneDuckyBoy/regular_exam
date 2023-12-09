@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/image}" method="post">
+
+  <label for="image" class="text-white font-weight-bold">Image of the product</label>
+  <input id="image"
+         name="image"
+         type="file"
+         class="form-control"
+  />
+    <button type="submit" value="submit">submit</button>
+
+</form>
+</body>
+</html>

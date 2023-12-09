@@ -20,10 +20,7 @@ public class HomeController {
     public String cart(){
         return "cart";
     }
-    @GetMapping("/checkout")
-    public String checkout(){
-        return "checkout";
-    }
+
     @GetMapping("/thanks_for_purchase")
     public String thanks_for_purchase(){
         return "thanks_for_purchase";
@@ -42,11 +39,7 @@ public class HomeController {
     public String item(){
         return "Item";
     }
-    @GetMapping("/add-item")
 
-    public String addItem(){
-        return "add-item";
-    }
     @GetMapping("/news")
 
     public String news(){
