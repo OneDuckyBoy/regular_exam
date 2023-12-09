@@ -110,4 +110,6 @@
     gap: 10px;
     flex-wrap: wrap;
 }
-
+button{
+    cursor: pointer;
+}

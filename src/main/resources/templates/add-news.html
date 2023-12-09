@@ -18,6 +18,55 @@
 
 </head>
 <body>
+<div>
+  <nav th:replace="~{fragments/navbar}"></nav>
+</div>
+
+<div class="container">
+  <h2 class="text-center text-white" style="margin-top: 150px">Add news</h2>
+  <form th:method="post"
+        th:action="@{/add-item}"
+        class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
+    <div class="form-group">
+      <label for="name" class="text-white font-weight-bold" >Name of the news</label>
+      <input id="name"
+             name="name"
+             type="text"
+             class="form-control"
+             style="padding-bottom: 10px"
+      />
+
+      <label for="description" class="text-white font-weight-bold">Description of the news</label>
+      <textarea id="description"
+                name="description"
+                type="text"
+                class="form-control"
+                rows="4" cols="20"
+                style="padding-bottom: 10px"
+      ></textarea>
+
+      <label for="image" class="text-white font-weight-bold">Image for the news</label>
+      <input id="image"
+             name="price"
+             type="file"
+             class="form-control"
+      />
+    </div>
+
+    <!--    <p th:if="${bad_credentials}" class="errors alert alert-danger">-->
+    <!--      Invalid username or password.-->
+    <!--    </p>-->
+
+    <div class="row">
+      <div class="col col-md-4">
+        <div class="button-holder d-flex">
+          <input type="submit" class="btn btn-info btn-lg" value="Add news"/>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
 
 </body>
 </html>

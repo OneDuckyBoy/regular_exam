@@ -19,9 +19,6 @@ window.onload = function() {
     addMoreItems(1)
     // addItem(2)
     // addItem(2)
-    // addItem(2)
-    // addMoreItems(2)
-    // addItem(2)
 
     function addMoreItems(num){
         let container = document.getElementsByClassName('items')[num];
@@ -54,13 +51,27 @@ window.onload = function() {
     function addItem(num){
         let container = document.getElementsByClassName('items')[num];
 
+
+
         let itemContainer = document.createElement('div');
         itemContainer.classList.add('item-container');
         container.appendChild(itemContainer);
+        let form = document.createElement("form")
+        form.method = "get";
+        form.action = "liked";
+        let button = document.createElement("button");
+    form.appendChild(button)
+
+        itemContainer.style.background = "white";
+        itemContainer.style.margin = "0px";
+        itemContainer.style.border = "none";
+        itemContainer.style.borderRadius = "10px";
+        itemContainer.type = "submit";
         let image = document.createElement('img');
+        button.appendChild(image)
         image.src = "https://i.postimg.cc/8CmBZH5N/shoes.webp";
         image.alt = "img";
-        itemContainer.appendChild(image);
+        itemContainer.appendChild(form);
         let name = document.createElement('p');
         name.classList.add('name');
         name.textContent = "ime ime ime";
