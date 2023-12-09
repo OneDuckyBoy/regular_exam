@@ -13,7 +13,7 @@ public class ImageServiceImpl {
     }
 
     public ImagesEntity getImageById(int id){
-        return imageRepository.getById(id);
+        return imageRepository.findById(id);
     }
 
 }

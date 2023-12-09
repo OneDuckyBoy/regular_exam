@@ -21,7 +21,7 @@ import java.lang.reflect.Type;
         @JoinColumn(name = "image_id")
         private ImagesEntity image;
 
-        @OneToOne()
+        @ManyToOne()
         @JoinColumn(name = "category_id")
         private ItemCategory category;
 

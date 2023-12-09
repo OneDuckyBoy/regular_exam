@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "categories")
 
@@ -20,7 +22,7 @@ public class ItemCategory extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private CategoriesEnum category;
 
-    @OneToOne(mappedBy = "category")
+    @OneToMany(mappedBy = "category")
 
-    private  ItemEntity item;
+    private List<ItemEntity> item;
 }

@@ -5,6 +5,8 @@ import bg.softuni.regular_exam.repositories.ItemRepository;
 import bg.softuni.regular_exam.services.ItemService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ItemServiceImpl implements ItemService {
     private final ItemRepository repository;
@@ -13,6 +15,9 @@ public class ItemServiceImpl implements ItemService {
         this.repository = repository;
     }
 
+    public List<ItemEntity> getAllItems(){
+        return repository.findAll();
+    }
     public ItemEntity getFirstItem(){
         ItemEntity item = repository.findById(1);
         return item;

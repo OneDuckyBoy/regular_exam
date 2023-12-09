@@ -1,17 +1,59 @@
+let items;
+// getImage(1)
+
+fetch('http://localhost:8080/rest/getAllItems')
+    .then(response => response.json())
+    .then(json =>{
+        // console.log(json)
+        items=json;
+        // let name = json.name
+        // let price = json.price;
+        // let imageLocation1 = json.image.imageLocation;
+        // console.log(imageLocation1)
+        }
+    )
+    .catch(error => console.log("error",error));
+function getImage(id){
+    fetch('http://localhost:8080/rest/getImage/'+id)
+        .then(response => response.json())
+        .then(json =>{
+                // console.log(json)
+            let img1 = json.imageLocation;
+
+                // console.log(img1)
+
+            }
+        )
+        // .catch(error => console.log("error",error));
+}
 window.onload = function() {
     let container = document.getElementsByClassName('items')[0];
 // container.innerHTML = 'hi';
 
 
+    items.forEach(item =>{
+
+        console.log(item);
+        let imagePath = item.image.imageLocation;
+        let name = item.name;
+        let price = item.price;
+        let id = item.id;
+
+        addItem(imagePath,name,price,true,id)
+
+    })
+
+
+
+    // getImage(1)
 
 
 
 
 
 
-
-    addItem("images/uploads/ducki the duck.jpg","ducki the duck", 10,true,"liked")
-    addItem("images/uploads/ducki the duck.jpg","ducki the duck", 10,true,"cart")
+    // addItem("images/uploads/ducki the duck.jpg","ducki the duck", 10,true,"liked")
+    // addItem("images/uploads/ducki the duck.jpg","ducki the duck", 10,true,"cart")
     // addItem("images/uploads/ducki the duck.jpg","ducki the duck", 10,true)
     // addItem("images/uploads/ducki the duck.jpg","ducki the duck", 10,true)
     // addItem()
