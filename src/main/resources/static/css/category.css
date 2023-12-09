@@ -13,7 +13,7 @@
     "sensors"
     "LEDs"
     "Displays"
-    "Cables-and-others";
+    "CablesAndOthers";
 }
 
 .categories { grid-area: categories; }
@@ -30,7 +30,7 @@
 
 .Displays { grid-area: Displays; }
 
-.Cables-and-others { grid-area: Cables-and-others; }
+.CablesAndOthers { grid-area: Cables-and-others; }
 a{
     color: white;
 }a:hover{

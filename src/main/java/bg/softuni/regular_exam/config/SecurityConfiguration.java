@@ -79,10 +79,10 @@ public class SecurityConfiguration {
             .build();
   }
 
-//  @Bean
-//  public UserDetailsService userDetailsService(UserRepository userRepository) {
-//    return new ArduinoUserDetailsServiceImpl(userRepository);
-//  }
+  @Bean
+  public UserDetailsService userDetailsService(UserRepository userRepository) {
+    return new ArduinoUserDetailsServiceImpl(userRepository);
+  }
 
   @Bean
   public PasswordEncoder passwordEncoder() {

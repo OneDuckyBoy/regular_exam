@@ -58,4 +58,27 @@ public class UserEntity extends BaseEntity{
 
     )
     private List<UserRoleEntity> roles=new ArrayList<>();
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+
+            name = "users_liked_items",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "liked_item_id")
+
+    )
+    private List<ItemEntity> likedItems;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+
+            name = "users_items_in_cart",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "item_in_cart_id")
+
+    )
+    private List<ItemEntity> itemsInCart;
+
+
 }
