@@ -40,8 +40,8 @@ public class SecurityConfiguration {
 //            .requestMatchers("/brands").hasRole(UserRoleEnum.ADMIN.name())
             // all other requests are authenticated.
             .anyRequest()
-//                .permitAll()
-                .authenticated()
+                .permitAll()
+//                .authenticated()
     )
             .formLogin(
         formLogin -> {
@@ -57,6 +57,7 @@ public class SecurityConfiguration {
           //todo roles
         }
     )
+
             .logout(
         logout -> {
           logout

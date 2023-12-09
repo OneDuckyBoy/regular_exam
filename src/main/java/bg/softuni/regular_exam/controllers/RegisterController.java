@@ -34,8 +34,17 @@ public class RegisterController {
     @PostMapping("/register")
     public ModelAndView register(@Valid @ModelAttribute("registerDTO")  UserRegisterDTO registerDTO,
                                  BindingResult bindingResult, RedirectAttributes rAtt){
-        ModelAndView mv = new ModelAndView("login");
 
+
+
+        ModelAndView mv = new ModelAndView("redirect:/login");
+
+        if(bindingResult.hasErrors()){
+            rAtt.addFlashAttribute("registerDTO", registerDTO);
+            rAtt.addFlashAttribute(
+                    "org.springframework.validation.BindingResult.SomeModel", bindingResult);
+            return new ModelAndView("/register");
+        }
 
         userService.register(registerDTO);
 

@@ -15,7 +15,7 @@
     <h2 class="text-center text-white">Register User</h2>
 
     <!-- Registration form start-->
-    <form
+    <form th:object="${registerDTO}"
 
             th:action="@{/register}"
             th:method="post"
@@ -30,9 +30,11 @@
                        type="text"
                        class="form-control"
                        placeholder="Email"/>
-                <p class="errors alert alert-danger">
-                    Email is required.
-                </p>
+                <small th:errors="*{email}" th:errorclass="is-invalid" class ="" style="color: red" >email error message</small>
+
+<!--                <p class="errors alert alert-danger">-->
+<!--                    Email is required.-->
+<!--                </p>-->
             </div>
         </div>
 
@@ -45,11 +47,13 @@
                         type="password"
                         class="form-control"
                         placeholder="Password"/>
-                <p class="errors alert alert-danger">
-                    Password is required.
-                </p>
+<!--                <p class="errors alert alert-danger">-->
+<!--                    Password is required.-->
+<!--                </p>-->
             </div>
         </div>
+        <small th:errors="*{password}" th:errorclass="is-invalid" style="color: red"  >email error message</small>
+
         <div class="row">
             <div class="form-group col-md-12 mb-3">
                 <label for="ConfirmPassword" class="text-white font-weight-bold">Confirm password</label>
@@ -59,11 +63,10 @@
                         type="password"
                         class="form-control"
                         placeholder="Password"/>
-                <p class="errors alert alert-danger">
-                    Password is required.
-                </p>
             </div>
         </div>
+        <small  th:errors="*{confirmPassword}" th:errorclass="is-invalid" style="color: red"  ><h1>email error message</h1></small>
+
 
         <div class="row">
             <div class="col col-md-4">
