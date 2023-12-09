@@ -37,7 +37,7 @@ window.onload = function() {
         let imagePath = item.image.imageLocation;
         let name = item.name;
         let price = item.price;
-        let id = item.id;
+        let id = "item/"+item.id;
 
         addItem(imagePath,name,price,true,id)
 

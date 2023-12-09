@@ -38,8 +38,9 @@
 .item-container img{
     font-family: "Times New Roman", Times, serif;
     color: green;
-    width: 200px;
+    /*width: 200px;*/
     padding-top: 10px;
+    height: 200px;
 }
 .item-container{
     background-color: white;

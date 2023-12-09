@@ -18,21 +18,24 @@
 
 </head>
 <body>
+
 <div class="store-container">
   <div class="nav-bar"><nav th:replace="~{fragments/navbar}"></nav></div>
-  <div class="image"><img style="margin-top: 60px;margin-left: 50px;width: 500px;border-radius: 10px" src="images/ducki the duck.jpg" alt="">
+  <p id="item-id" th:text="${IdOfItem}"></p>
+
+  <div class="image"><img id="image-image"  src="images/duck.jpg" alt="img">
   </div>
   <div class="name-and-desc text-light" style="margin-top: 100px">
-    <h1>ime ime ime</h1>
+    <h1 class="item-name">ime ime ime</h1>
     <hr style="background-color: white">
 <!--    <br>-->
     <h3 style=" max-width:400px;
-    word-wrap:break-word;">desc asasdasdasdasdasdasdasdasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</h3>
+    word-wrap:break-word;" class="description" >desc asasdasdasdasdasdasdasdasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</h3>
 
   </div>
   <div class="price-and-buttons text-light">
     <div style="margin-top: 100px; margin-left: 50px;display: flex; flex-direction: column ;padding-right: 50px; padding-bottom: 50px;gap: 50px">
-    <h1 >Price 5 lv
+    <h1 >Price <span class="price" >5</span> lv
       <hr style="background-color: white">
       <button class="button add-to-cart" role="button" >Add to cart</button>
       <button class="button add-to-liked" role="button">Add to liked</button>

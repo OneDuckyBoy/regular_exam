@@ -22,11 +22,11 @@ public class ItemRestController {
         this.imageService = imageService;
     }
 
-    @GetMapping(path = "/getItem",produces = "application/json")
-    public List<ItemEntity> getItem(){
+    @GetMapping(path = "/getItem/{id}",produces = "application/json")
+    public ItemEntity getItem(@PathVariable("id") Long id){
 
 
-        return List.of(itemService.getFirstItem());
+        return itemService.getFirstItem(id);
     }
     @GetMapping(path = "/getAllItems",produces = "application/json")
     public List<ItemEntity> getAllItems(){

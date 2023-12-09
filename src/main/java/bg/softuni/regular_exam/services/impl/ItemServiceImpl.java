@@ -18,8 +18,8 @@ public class ItemServiceImpl implements ItemService {
     public List<ItemEntity> getAllItems(){
         return repository.findAll();
     }
-    public ItemEntity getFirstItem(){
-        ItemEntity item = repository.findById(1);
+    public ItemEntity getFirstItem(long id){
+        ItemEntity item = repository.findById(id);
         return item;
     }
 }
