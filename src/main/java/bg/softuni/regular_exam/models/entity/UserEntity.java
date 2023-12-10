@@ -70,6 +70,22 @@ public class UserEntity extends BaseEntity{
     )
     private List<ItemEntity> likedItems;
 
+    public List<ItemEntity> getLikedItems() {
+        return likedItems;
+    }
+
+    public void setLikedItems(List<ItemEntity> likedItems) {
+        this.likedItems = likedItems;
+    }
+
+    public List<ItemEntity> getItemsInCart() {
+        return itemsInCart;
+    }
+
+    public void setItemsInCart(List<ItemEntity> itemsInCart) {
+        this.itemsInCart = itemsInCart;
+    }
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
 
@@ -80,5 +96,18 @@ public class UserEntity extends BaseEntity{
     )
     private List<ItemEntity> itemsInCart;
 
+    public void AddToCart(ItemEntity item){
+        if (!itemsInCart.contains(item))
+        itemsInCart.add(item);
+    }public void removeFromCart(ItemEntity item){
+        if (itemsInCart.contains(item))
+        itemsInCart.remove(item);
+    }public void AddToLiked(ItemEntity item){
+        if (!likedItems.contains(item))
+        likedItems.add(item);
+    }public void removeFromLiked(ItemEntity item){
+//        if (likedItems.contains(item))
+        likedItems.remove(item);
+    }
 
 }
