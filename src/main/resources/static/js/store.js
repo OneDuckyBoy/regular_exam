@@ -62,7 +62,7 @@ window.onload = function() {
     let container = document.getElementsByClassName('items')[0];
 // container.innerHTML = 'hi';
 
-let category= window.location.href[window.location.href.length-1]
+let category= new URL (location.href).searchParams.get('category')
 // console.log(category)
 
 

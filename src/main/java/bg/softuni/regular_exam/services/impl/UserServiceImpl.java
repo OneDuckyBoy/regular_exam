@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -66,8 +67,19 @@ public class UserServiceImpl implements UserService {
 //        }
         long userId = user.getId();
         long itemId = item.getId();
-        userRepository.removeLikedItem(userId,itemId);
+//        userRepository.removeLikedItem(userId,itemId);
         List<ItemEntity> likedItems = user.getLikedItems();
+
+        List<ItemEntity> test = new ArrayList<>();
+        for (ItemEntity likedItem : likedItems) {
+            if (likedItem.getId().equals(itemId)){
+                test.add( likedItem);
+//                System.out.println("the Item should be removed");
+            }
+        }
+        likedItems.removeAll(test);
+        user.setLikedItems(likedItems);
+
 //        likedItems.remove(item);
 //        long id = item.getId();
 //        likedItems.forEach(item1->{if (item1.getId().equals(id)){
@@ -78,6 +90,7 @@ public class UserServiceImpl implements UserService {
 //        likedItems.remove(item);
 //        user.setLikedItems(likedItems);
 //        }
+
         userRepository.save(user);
 
     }public void removeItemFromCart(ItemEntity item) {

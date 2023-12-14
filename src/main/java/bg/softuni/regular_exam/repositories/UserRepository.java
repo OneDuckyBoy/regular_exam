@@ -14,7 +14,7 @@ public interface UserRepository extends JpaRepository<UserEntity,Long> {
 
 
 
-    @Query(value = "delete from users_liked_items where user_id = {user_id} and liked_item_id ={item_id}",nativeQuery = true)
-    void removeLikedItem(long user_id,long item_id);
+//    @Query(value = "delete from users_liked_items where user_id = {user_id} and liked_item_id ={item_id}",nativeQuery = true)
+//    void removeLikedItem(long user_id,long item_id);
 
 }
