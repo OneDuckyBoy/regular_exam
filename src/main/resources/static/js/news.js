@@ -1,10 +1,10 @@
 window.onload = function() {
-    addNews('https://i.postimg.cc/8CmBZH5N/shoes.webp',
-        'Shoes are trendy now');
-    addNews('https://i.postimg.cc/8CmBZH5N/shoes.webp',
-        'Shoes are trendy now');
-    addNews('https://i.postimg.cc/8CmBZH5N/shoes.webp',
-        'Shoes are trendy now');
+    // addNews('https://i.postimg.cc/8CmBZH5N/shoes.webp',
+    //     'Shoes are trendy now');
+    // addNews('https://i.postimg.cc/8CmBZH5N/shoes.webp',
+    //     'Shoes are trendy now');
+    // addNews('https://i.postimg.cc/8CmBZH5N/shoes.webp',
+    //     'Shoes are trendy now');
     function addNews(imageUrl, title1){
         let container = document.getElementById('news');
         let form = document.createElement('form');

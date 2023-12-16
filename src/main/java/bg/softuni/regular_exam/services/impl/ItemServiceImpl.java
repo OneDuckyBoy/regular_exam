@@ -9,16 +9,23 @@ import java.util.List;
 
 @Service
 public class ItemServiceImpl implements ItemService {
-    private final ItemRepository repository;
+    private final ItemRepository itemRepository;
 
     public ItemServiceImpl(ItemRepository repository) {
-        this.repository = repository;
+        this.itemRepository = repository;
     }
 
+    @Override
     public List<ItemEntity> getAllItems(){
-        return repository.findAll();
+        return itemRepository.findAll();
     }
+    @Override
     public ItemEntity getItem(long id){
-        return repository.findById(id);
+        return itemRepository.findById(id);
+    }
+
+    @Override
+    public void saveItem(ItemEntity item) {
+        itemRepository.save(item);
     }
 }

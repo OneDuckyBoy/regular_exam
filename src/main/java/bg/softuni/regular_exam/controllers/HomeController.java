@@ -57,22 +57,7 @@ public class HomeController {
         return mv;
     }
 
-    @GetMapping("/news")
 
-    public String news(){
-        return "news";
-    }
-    @GetMapping("/add-news")
-
-    public String addNews(){
-        return "add-news";
-    }
-
-    @GetMapping("/news-page")
-
-    public String newsPage(){
-        return "news-page";
-    }
 
 
 }

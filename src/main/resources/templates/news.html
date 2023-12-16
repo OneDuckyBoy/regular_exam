@@ -21,7 +21,20 @@
     <div class="nav-bar" ><nav th:replace="~{fragments/navbar}"></nav></div>
     <div class="news-text text-light"><h1>The news:</h1>
         <hr></div>
-    <div class="news" id="news"></div>
+    <div class="news" id="news">
+        <div th:each="news1:${news}">
+            <form
+                th:action="@{'/news-page/'+${news1.id}}">
+                <button type="submit" class="news1">
+                        <div class="image">
+                            <img th:src="${news1.getImage().getImageLocation()}" alt="img">
+                        </div>
+                    <div class="name text" th:text="${news1.description}">Shoes are trendy now</div>
+                </button>
+            </form>
+        </div>
+
+    </div>
 </div>
 
 </body>

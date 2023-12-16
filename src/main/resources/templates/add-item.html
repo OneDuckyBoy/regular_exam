@@ -11,6 +11,8 @@
   <h2 class="text-center text-white" style="margin-top: 150px">Add item</h2>
   <form th:method="post"
         th:action="@{/add-item}"
+        th:object="${itemDTO}"
+        enctype="multipart/form-data"
         class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
     <div class="form-group">
       <label for="name" class="text-white font-weight-bold">Name of the product</label>
@@ -18,6 +20,7 @@
              name="name"
              type="text"
              class="form-control"
+             th:field="${itemDTO.name}"
              />
 
       <label for="price" class="text-white font-weight-bold">Price of the product</label>
@@ -25,17 +28,19 @@
              name="price"
              type="text"
              class="form-control"
+             th:field="${itemDTO.price}"
              />
       <label for="category" class="text-white font-weight-bold">Category of the product</label>
       <select id="category"
              name="category"
              class="form-control"
+              th:field="${itemDTO.category}"
       >
-        <option value="controller">Controller</option>
-        <option value="sensor">Sensor</option>
-        <option value="leds">LEDs</option>
-        <option value="displays">Displays</option>
-        <option value="cablesAndOthers">Cables and others</option>
+        <option th:value="'controller'">Controller</option>
+        <option th:value="'sensors'">Sensor</option>
+        <option th:value="'leds'">LEDs</option>
+        <option th:value="'Displays'">Displays</option>
+        <option th:value="'cablesAndOthers'">Cables and others</option>
       </select>
 
       <label for="description" class="text-white font-weight-bold">Description of the product</label>
@@ -44,13 +49,16 @@
              type="text"
              class="form-control"
                 rows="4" cols="20"
+                th:field="${itemDTO.desc}"
       ></textarea>
 
       <label for="image" class="text-white font-weight-bold">Image of the product</label>
       <input id="image"
+             th:field="${itemDTO.image}"
              name="image"
              type="file"
              class="form-control"
+
       />
     </div>
 

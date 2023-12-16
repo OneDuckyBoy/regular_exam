@@ -19,13 +19,17 @@
 </head>
 <body>
 
-<div class="news-page-container text-light">
+<div class="news-page-container text-light" style="padding-left: 50px">
     <div class="navbar"><nav th:replace="~{fragments/navbar}"></nav></div>
-    <div class="news-name "><h1>Big News: Shoes are trendy now!</h1>
+    <div class="news-name " ><h1 th:text="${news.name}">Big News: Shoes are trendy now!</h1>
         <hr>
     </div>
-    <div class="news-picture"><img src="https://i.postimg.cc/8CmBZH5N/shoes.webp" alt="img"></div>
-    <div class="news-desc"><p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor in labore laudantium nisi quae quia reprehenderit tempore temporibus. Dolor, facilis natus optio placeat reiciendis rem reprehenderit sunt suscipit tempore voluptatum.</p></div>
+    <div style="padding-left: 50px" >
+        <div class="news-picture" >
+            <img  th:src="${'http://localhost:8080/'+news.getImage().getImageLocation()}" alt="img">
+        </div>
+        <div class="news-desc"><p th:text="${news.description}"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor in labore laudantium nisi quae quia reprehenderit tempore temporibus. Dolor, facilis natus optio placeat reiciendis rem reprehenderit sunt suscipit tempore voluptatum.</p></div>
+    </div>
 </div>
 
 </body>

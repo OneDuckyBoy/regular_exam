@@ -76,7 +76,7 @@ let category= new URL (location.href).searchParams.get('category')
             // console.log(item.category.id)
             let liked= getIfItemIsLiked(id);
             addItem(imagePath,name,price,liked,id)
-        }else if (category=='/') {
+        }else {
             let liked= getIfItemIsLiked(id);
 
             // console.log("else")

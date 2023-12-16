@@ -18,19 +18,12 @@ import net.minidev.json.annotate.JsonIgnore;
 //@NoArgsConstructor
 //@AllArgsConstructor
 public class ImagesEntity extends BaseEntity{
-//    public ItemEntity getItem() {
-//        return item;
-//    }
-
-//    public void setItem(ItemEntity item) {
-//        this.item = item;
-//    }
 
     public ImagesEntity() {
     }
 
-    public ImagesEntity(ItemEntity item, String imageLocation) {
-//        this.item = item;
+    public ImagesEntity(String imageLocation) {
+
         this.imageLocation = imageLocation;
     }
 
@@ -41,10 +34,6 @@ public class ImagesEntity extends BaseEntity{
     public void setImageLocation(String imageLocation) {
         this.imageLocation = imageLocation;
     }
-
-//    @JsonIgnore
-//    @OneToOne(mappedBy = "image")
-//    private ItemEntity item;
 
     @Column(name = "image_location")
     private String imageLocation;

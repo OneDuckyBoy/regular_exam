@@ -25,7 +25,9 @@
 <div class="container">
   <h2 class="text-center text-white" style="margin-top: 150px">Add news</h2>
   <form th:method="post"
-        th:action="@{/add-item}"
+        th:action="@{/add-news}"
+        th:object="${newsDTO}"
+        enctype="multipart/form-data"
         class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
     <div class="form-group">
       <label for="name" class="text-white font-weight-bold" >Name of the news</label>
@@ -34,6 +36,9 @@
              type="text"
              class="form-control"
              style="padding-bottom: 10px"
+
+             th:field="${newsDTO.name}"
+             th:errorclass="'is-invalid bg-danger'"
       />
 
       <label for="description" class="text-white font-weight-bold">Description of the news</label>
@@ -43,6 +48,8 @@
                 class="form-control"
                 rows="4" cols="20"
                 style="padding-bottom: 10px"
+                th:field="${newsDTO.description}"
+                th:errorclass="'is-invalid bg-danger'"
       ></textarea>
 
       <label for="image" class="text-white font-weight-bold">Image for the news</label>
@@ -50,6 +57,8 @@
              name="price"
              type="file"
              class="form-control"
+             th:field="${newsDTO.image}"
+             th:errorclass="'is-invalid bg-danger'"
       />
     </div>
 
