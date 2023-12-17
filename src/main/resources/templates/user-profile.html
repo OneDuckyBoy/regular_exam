@@ -1,0 +1,120 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>Arduino marketplace</title>
+    <link rel="stylesheet" th:href="@{/css/reset-css.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/category.css}"/>
+
+
+
+    <script th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="https://kit.fontawesome.com/734a4e4265.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Item.css}"/>
+    <script th:src="@{/js/user_profile.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/store.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/user-profile.css}"/>
+
+</head>
+
+
+<body>
+<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+
+
+<div class="store-container ">
+    <div class="navbar"><nav th:replace="~{fragments/navbar}"></nav></div>
+
+<!--    <div class="shop-categories " >-->
+<!--        <br><br><br>-->
+<!--        <div class="container-category-selector text-light">-->
+<!--            <div class="categories" > <h1>categories</h1></div>-->
+<!--            <div class="line"><p><hr/></p> </div>-->
+<!--            <div class="all-categories"><a href=""> all categories</a></div>-->
+<!--            <div class="controllers"><a href=""> controllers</a></div>-->
+<!--            <div class="sensors"><a href=""> sensors</a></div>-->
+<!--            <div class="LEDs"><a href="">LEDs</a></div>-->
+<!--            <div class="Displays"><a href="">Displays</a></div>-->
+<!--            <div class="Cables-and-others"><a href="">Cables and others</a></div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="container-user-info text-light" style=" margin-top: 100px;">
+        <div class="picture" >
+            <img style="
+                /*margin-top: 60px;margin-left: 50px;*/
+                width: 300px;border-radius: 1000px" src="images/uploads/ducki the duck.jpg" alt="">
+        </div>
+        <div class="email"><th:block sec:authentication="name" >asd</th:block> </div>
+        <div  class="line"><hr/></div>
+        <div class="user-profile-text"><h1>User profile</h1></div>
+    </div>
+    <div class="shop-items "style="margin-top: 60px"><h1 class="text-light">Liked
+        <hr></h1> <div class="items" style="margin-top: -100px">
+        <div th:each="item:${liked}" class="item-container" style="border-radius: 7px;padding: 0">
+            <i style="color: red; position: relative; left: 85px;top:25px;" class="fa-lg     fa-solid fa-heart"></i>
+            <img style="border-radius: 7px" th:src="${item.image.getImageLocation()}" alt="img">
+            <p class="name" th:text="${item.name}">ime ime ime</p>
+            <div class="item-text">
+                <p class="price" th:text="${item.price}+' leva'">5 leva</p>
+                <form th:action="@{'rest/addToCart/'+${item.id}}"  method="get" target="dummyframe">
+                    <button class="button-2" role="button" type="submit">Add to Cart</button></form>
+            </div>
+            <div class="item-text">
+                <form th:action="@{'/RemoveFromLikedInProfilePage/'+${item.id}}"  method="get">
+                    <button class="button-2" role="button">Remove from Liked <i class=" fa fa-solid fa-xmark fa-lg " aria-hidden="true"></i ></button>
+                </form>
+            </div>
+
+        </div>
+
+        <form th:if="${liked.size()==3}" method="get" action="liked">
+            <button class="item-container" type="submit" style="background: white; margin: 0px; border: none;">
+                <div href="/liked"><i class="fa-normal fa-plus fa-8x"></i></div><p>More</p>
+            </button>
+        </form>
+
+    </div>
+        <h1 class="text-light">Cart
+            <hr></h1><div class="items" style="margin-top: -100px">
+
+            <div th:each="item:${cart}" class="item-container" style="border-radius: 7px;padding: 0">
+                <i style="color: red; position: relative; left: 85px;top:25px;" class="fa-lg     fa-solid fa-heart"></i>
+                <img style="border-radius: 7px" th:src="${item.image.getImageLocation()}" alt="img">
+                <p class="name" th:text="${item.name}">ime ime ime</p>
+                <div class="item-text">
+                    <p class="price" th:text="${item.price}+' leva'">5 lev</p>
+<!--                    <form th:action="@{'rest/addToCart/'+${item.id}}"  method="get" target="dummyframe">-->
+<!--                        <button class="button-2" role="button" type="submit">Add to Cart</button></form>-->
+                </div>
+                <div class="item-text">
+                    <form th:action="@{'/RemoveFromCart/'+${item.id}}"  method="get">
+                        <button class="button-2" role="button">Remove from cart <i class=" fa fa-solid fa-xmark fa-lg " aria-hidden="true"></i ></button>
+                    </form>
+                </div>
+
+            </div>
+
+            <form th:if="${cart.size()==3}" method="get" action="liked">
+                <button class="item-container" type="submit" style="background: white; margin: 0px; border: none;">
+                    <div href="/cart    "><i class="fa-normal fa-plus fa-8x"></i></div><p>More</p>
+                </button>
+            </form>
+    </div>
+<!--        <h1 class="text-light">Bought items-->
+<!--            <hr></h1><div class="items" style="margin-top: -100px">-->
+
+<!--    </div>-->
+
+    </div>
+</div>
+
+<!--  </div>-->
+
+</body>
+</html>

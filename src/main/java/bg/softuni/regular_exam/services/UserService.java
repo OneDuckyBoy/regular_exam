@@ -22,4 +22,6 @@ public interface UserService {
     void removeItemFromCart(ItemEntity item);
 
     List<ItemEntity> GetLikedItemsFromUser();
+
+    List<ItemEntity> GetCartItemsFromUser();
 }

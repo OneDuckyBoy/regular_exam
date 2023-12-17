@@ -55,10 +55,7 @@ public class HomeController {
         return "liked";
     }
 
-    @GetMapping("/user_profile")
-    public String user_profile(){
-        return "user_profile";
-    }
+
     @GetMapping("/item")///${id}
     public ModelAndView item(
 //            @PathVariable("id") int id
@@ -84,6 +81,13 @@ public class HomeController {
         userService.removeItemFromLiked(item);
 
         return "redirect:/liked";
+    }@GetMapping(path = "/RemoveFromLikedInProfilePage/{id}")
+    public  String removeFromLikedInProfilePage(@PathVariable("id") Long id){
+
+        ItemEntity item = itemService.getItem(id);
+        userService.removeItemFromLiked(item);
+
+        return "redirect:/user-profile";
     }
 
 

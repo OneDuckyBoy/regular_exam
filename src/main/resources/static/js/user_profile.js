@@ -9,14 +9,14 @@ window.onload = function() {
 
 
 
-    addItem(0)
-    addItem(0)
-    addItem(0)
-    addMoreItems(0)
-    addItem(1)
-    addItem(1)
-    addItem(1)
-    addMoreItems(1)
+    // addItem(0)
+    // addItem(0)
+    // addItem(0)
+    // addMoreItems(0)
+    // addItem(1)
+    // addItem(1)
+    // addItem(1)
+    // addMoreItems(1)
     // addItem(2)
     // addItem(2)
 

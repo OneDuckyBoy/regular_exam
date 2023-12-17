@@ -86,9 +86,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public void removeItemFromCart(ItemEntity item) {
         UserEntity user = GetUserByEmail();
-        if (user.getItemsInCart().contains(item)){
-            user.removeFromCart(item);
+        long itemId = item.getId();
+        List<ItemEntity> cartItems = user.getItemsInCart();
+
+        List<ItemEntity> test1 = new ArrayList<>();
+        for (ItemEntity cartItem : cartItems) {
+            if (cartItem.getId().equals(itemId)){
+                test1.add( cartItem);
+            }
         }
+        cartItems.removeAll(test1);
+        user.setItemsInCart(cartItems);
         userRepository.save(user);
 
     }
@@ -98,6 +106,11 @@ public class UserServiceImpl implements UserService {
     public List<ItemEntity> GetLikedItemsFromUser(){
         UserEntity user = GetUserByEmail();
         return user.getLikedItems();
+
+    }@Override
+    public List<ItemEntity> GetCartItemsFromUser(){
+        UserEntity user = GetUserByEmail();
+        return user.getItemsInCart();
 
     }
 }
