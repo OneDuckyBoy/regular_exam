@@ -6,6 +6,7 @@ import bg.softuni.regular_exam.services.impl.ItemServiceImpl;
 import bg.softuni.regular_exam.services.impl.UserServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,9 +31,29 @@ public class ItemRestController {
     }@GetMapping(path = "/getIfItemIsLiked/{id}",produces = "application/json")
     public boolean getIfItemIsLiked(@PathVariable("id") Long id){
 
+        List<ItemEntity> likedItems = userService.GetUserByEmail().getLikedItems();
 
-        return userService.GetUserByEmail().getLikedItems().contains(itemService.getItem(id));
+        List<ItemEntity> test = new ArrayList<>();
+        for (ItemEntity likedItem : likedItems) {
+            if (likedItem.getId().equals(id)){
+                return true;
+            }
+        }
+
+        return false;
     }
+    @GetMapping(path = "/getLikedItemsIds",produces = "application/json")
+    public List<Long> getLikedItems(){
+        List<ItemEntity> likedItems = userService.GetUserByEmail().getLikedItems();
+        List<Long> ids = new ArrayList<>();
+        for (ItemEntity likedItem : likedItems) {
+            ids.add(likedItem.getId());
+        }
+
+
+        return ids;
+    }
+
 
 
     @GetMapping(path = "/getAllItems",produces = "application/json")
@@ -77,20 +98,15 @@ public class ItemRestController {
     @ResponseBody
     public Map<String, String> removeFromLiked(@PathVariable("id") Long id){
 
-//        System.out.println("test asd "+id);
-
         ItemEntity item = itemService.getItem(id);
         userService.removeItemFromLiked(item);
-//        UserEntity user = userService.GetUserByEmail();
-//       user.removeFromLiked(item);
-//        userService.saveUser(user);
 
-        System.out.println("asd");
 
         Map<String, String> response = new HashMap<>();
         response.put("status", "success");
         response.put("message", "Action completed successfully");
         return response;
     }
+
 
 }

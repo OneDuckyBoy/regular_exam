@@ -1,22 +1,22 @@
 window.onload = function() {
     let container = document.getElementsByClassName('items')[0];
 // container.innerHTML = 'hi';
-    addItem()
-    addItem()
-    addItem()
-    addItem()
-    addItem()
-    addItem()
-    addItem()
-    addItem()
-    addItem()
-    addItem()
-    addItem()
-    addItem()
-    addItem()
-    addItem()
-    addItem()
-    addItem()
+//     addItem()
+//     addItem()
+//     addItem()
+//     addItem()
+//     addItem()
+//     addItem()
+//     addItem()
+//     addItem()
+//     addItem()
+//     addItem()
+//     addItem()
+//     addItem()
+//     addItem()
+//     addItem()
+//     addItem()
+//     addItem()
 
     function addItem(){
         let itemContainer = document.createElement('div');

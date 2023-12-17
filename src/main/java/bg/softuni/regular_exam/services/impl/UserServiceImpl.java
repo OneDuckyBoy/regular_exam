@@ -36,12 +36,14 @@ public class UserServiceImpl implements UserService {
             userRepository.save(user);
         }
     }
+    @Override
     public UserEntity GetUserByEmail(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String email = auth.getName();
         return userRepository.findByEmail(email).get();
     }
 
+    @Override
     public void saveItemToCart(ItemEntity item) {
         UserEntity user = GetUserByEmail();
         if (!user.getItemsInCart().contains(item)){
@@ -49,6 +51,7 @@ public class UserServiceImpl implements UserService {
         }
         userRepository.save(user);
     }
+    @Override
     public void saveItemToLiked(ItemEntity item) {
         UserEntity user = GetUserByEmail();
         if (!user.getLikedItems().contains(item)){
@@ -56,49 +59,45 @@ public class UserServiceImpl implements UserService {
         }
         userRepository.save(user);
     }
+    @Override
     public void saveUser(UserEntity user){
         userRepository.save(user);
+
     }
 
+    @Override
     public void removeItemFromLiked(ItemEntity item) {
         UserEntity user = GetUserByEmail();
-//        if (user.getLikedItems().contains(item)){
-//            user.removeFromLiked(item);
-//        }
-        long userId = user.getId();
         long itemId = item.getId();
-//        userRepository.removeLikedItem(userId,itemId);
         List<ItemEntity> likedItems = user.getLikedItems();
 
         List<ItemEntity> test = new ArrayList<>();
         for (ItemEntity likedItem : likedItems) {
             if (likedItem.getId().equals(itemId)){
                 test.add( likedItem);
-//                System.out.println("the Item should be removed");
             }
         }
         likedItems.removeAll(test);
         user.setLikedItems(likedItems);
 
-//        likedItems.remove(item);
-//        long id = item.getId();
-//        likedItems.forEach(item1->{if (item1.getId().equals(id)){
-//        likedItems.remove();
-//        }
-//        });
-
-//        likedItems.remove(item);
-//        user.setLikedItems(likedItems);
-//        }
-
         userRepository.save(user);
 
-    }public void removeItemFromCart(ItemEntity item) {
+    }
+    @Override
+    public void removeItemFromCart(ItemEntity item) {
         UserEntity user = GetUserByEmail();
         if (user.getItemsInCart().contains(item)){
             user.removeFromCart(item);
         }
         userRepository.save(user);
+
+    }
+
+
+    @Override
+    public List<ItemEntity> GetLikedItemsFromUser(){
+        UserEntity user = GetUserByEmail();
+        return user.getLikedItems();
 
     }
 }

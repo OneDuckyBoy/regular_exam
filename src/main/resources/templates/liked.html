@@ -16,6 +16,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/category.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/liked.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/liked-page.css}"/>
 
 
 
@@ -26,23 +27,41 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 </head>
 <body>
+<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
 
 <div class="store-container ">
     <div class="navbar"><nav th:replace="~{fragments/navbar}"></nav></div>
     <div class="shop-categories " >
         <br><br><br>
-        <div class="container-category-selector text-light">
-            <div class="categories" > <h1>Liked items</h1></div>
-            <div class="line"><p><hr/></p> </div>
-            <div class="all-categories"><a href=""> all categories</a></div>
-            <div class="controllers"><a href=""> controllers</a></div>
-            <div class="sensors"><a href=""> sensors</a></div>
-            <div class="LEDs"><a href="">LEDs</a></div>
-            <div class="Displays"><a href="">Displays</a></div>
-            <div class="Cables-and-others"><a href="">Cables and others</a></div>
+        <div class="container-liked-page-user-info text-light">
+            <div class="picture" >
+                <img style="
+                /*margin-top: 60px;margin-left: 50px;*/
+                width: 300px;border-radius: 1000px" src="images/uploads/ducki the duck.jpg" alt="">
+                </div>
+            <div class="email"><th:block sec:authentication="name" >asd</th:block> </div>
+            <div  class="line"><hr/></div>
+            <div class="liked-items-text"><h1>Liked items</h1></div>
         </div>
     </div>
-    <div class="shop-items text-light"><div class="items">
+    <div class="shop-items"><div class="items">
+
+        <div th:each="item:${liked}" class="item-container" style="border-radius: 7px;padding: 0">
+            <i style="color: red; position: relative; left: 85px;top:25px;" class="fa-lg     fa-solid fa-heart"></i>
+            <img style="border-radius: 7px" th:src="${item.image.getImageLocation()}" alt="img">
+            <p class="name" th:text="${item.name}">ime ime ime</p>
+            <div class="item-text">
+                <p class="price" th:text="${item.price}+' leva'">5 leva</p>
+                <form th:action="@{'rest/addToCart/'+${item.id}}"  method="get" target="dummyframe">
+                <button class="button-2" role="button" type="submit">Add to Cart</button></form>
+            </div>
+            <div class="item-text">
+                <form th:action="@{'/RemoveFromLikedInLikedPage/'+${item.id}}"  method="get">
+                    <button class="button-2" role="button">Remove from Liked <i class=" fa fa-solid fa-xmark fa-lg " aria-hidden="true"></i ></button>
+                </form>
+            </div>
+
+        </div>
 
     </div>
 
@@ -54,8 +73,8 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <div class="navbar"><nav th:replace="~{fragments/navbar}"></nav></div>
 
     <div class="shop-categories "  style="margin-top: 60px">
-        <img style="margin-top: 60px;margin-left: 50px;width: 300px;border-radius: 1000px" src="images/ducki the duck.jpg" alt="">
-        <div class="username text-light"><th:block sec:authentication="name" >asd</th:block></div>
+
+        <div class="username text-light">></div>
     </div>
     <div class="shop-items " style="margin-top: 60px"><div class="items"></div>
 

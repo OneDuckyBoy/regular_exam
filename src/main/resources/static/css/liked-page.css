@@ -1,0 +1,20 @@
+.container-liked-page-user-info {  display: grid;
+    /*display: inline;*/
+    font-size: 25px;padding-top: 30px;padding-left: 20px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5fr 1fr 1fr 2fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "picture"
+    "email"
+    "line"
+    "liked-items-text";
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.picture { grid-area: picture; }
+.email { grid-area: email; }
+.line { margin-left: -50px; grid-area: line; }
+.liked-items-text { grid-area: liked-items-text; }
