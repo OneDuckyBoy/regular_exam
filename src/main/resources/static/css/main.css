@@ -4,8 +4,15 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+
+}
+.background-dark{
     background-color: #464646;
 }
+.background-light{
+    background-color: #ffef92;
+}
+/*FFEF92*/
 
 .navbar .logo {
     max-height: 50px;

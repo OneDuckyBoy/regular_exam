@@ -1,6 +1,7 @@
 package bg.softuni.regular_exam.controllers;
 
 import bg.softuni.regular_exam.models.dto.UserRegisterDTO;
+import bg.softuni.regular_exam.schedule.Theme;
 import bg.softuni.regular_exam.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,8 @@ public class RegisterController {
 
     @GetMapping("/register")
     public ModelAndView register(Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
         ModelAndView mv = new ModelAndView("/register");
         if(!model.containsAttribute("registerDTO")){
             model.addAttribute("registerDTO",

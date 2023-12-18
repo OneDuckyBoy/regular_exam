@@ -17,7 +17,7 @@
 
 
 </head>
-<body>
+<body th:class="'base '+${darkTheme ? 'background-dark text-light' : 'background-light '}">
 
 <div class="store-container">
   <div class="nav-bar"><nav th:replace="~{fragments/navbar}"></nav></div>
@@ -25,7 +25,7 @@
 
   <div class="image"><img id="image-image"  src="images/duck.jpg" alt="img">
   </div>
-  <div class="name-and-desc text-light" style="margin-top: 100px">
+  <div class="name-and-desc " style="margin-top: 100px">
     <h1 class="item-name">ime ime ime</h1>
     <hr style="background-color: white">
 <!--    <br>-->
@@ -33,7 +33,7 @@
     word-wrap:break-word;" class="description" >desc asasdasdasdasdasdasdasdasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</h3>
 
   </div>
-  <div class="price-and-buttons text-light">
+  <div class="price-and-buttons ">
     <div style="margin-top: 100px; margin-left: 50px;display: flex; flex-direction: column ;padding-right: 50px; padding-bottom: 50px;gap: 50px">
     <h1 >Price <span class="price" >5</span> lv
       <hr style="background-color: white">

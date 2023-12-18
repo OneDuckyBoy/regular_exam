@@ -2,20 +2,22 @@
 <html lang="en" >
 <head th:replace="~{fragments/head}">
 </head>
-<body>
+<body th:class="'base '+${darkTheme ? 'background-dark text-light' : 'background-light '}">
 <div>
   <nav th:replace="~{fragments/navbar}"></nav>
 </div>
 
 <div class="container">
-  <h2 class="text-center text-white" style="margin-top: 150px">Add item</h2>
+  <h2 class="text-center
+" style="margin-top: 150px">Add item</h2>
   <form th:method="post"
         th:action="@{/add-item}"
         th:object="${itemDTO}"
         enctype="multipart/form-data"
         class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
     <div class="form-group">
-      <label for="name" class="text-white font-weight-bold">Name of the product</label>
+      <label for="name" class="
+      font-weight-bold">Name of the product</label>
       <input id="name"
              name="name"
              type="text"
@@ -23,14 +25,16 @@
              th:field="${itemDTO.name}"
              />
 
-      <label for="price" class="text-white font-weight-bold">Price of the product</label>
+      <label for="price" class="
+      font-weight-bold">Price of the product</label>
       <input id="price"
              name="price"
              type="text"
              class="form-control"
              th:field="${itemDTO.price}"
              />
-      <label for="category" class="text-white font-weight-bold">Category of the product</label>
+      <label for="category" class="
+      font-weight-bold">Category of the product</label>
       <select id="category"
              name="category"
              class="form-control"
@@ -43,7 +47,9 @@
         <option th:value="'cablesAndOthers'">Cables and others</option>
       </select>
 
-      <label for="description" class="text-white font-weight-bold">Description of the product</label>
+      <label for="description" class="
+
+      font-weight-bold">Description of the product</label>
       <textarea id="description"
              name="description"
              type="text"
@@ -52,7 +58,8 @@
                 th:field="${itemDTO.desc}"
       ></textarea>
 
-      <label for="image" class="text-white font-weight-bold">Image of the product</label>
+      <label for="image" class="
+       font-weight-bold">Image of the product</label>
       <input id="image"
              th:field="${itemDTO.image}"
              name="image"

@@ -31,10 +31,16 @@
 .Displays { grid-area: Displays; }
 
 .CablesAndOthers { grid-area: Cables-and-others; }
-a{
+.white  {
     color: white;
-}a:hover{
+}.white{
      color: white;
+ }
+.dark {
+    color: #000710;
+/*    000710 todo dark color*/
+}.dark{
+     color: #000710;
  }
 hr {
     border-color: white;

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <title>Arduino marketplace</title>
+  <link rel="stylesheet" th:href="@{/css/reset-css.css}"/>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+  <script src="https://kit.fontawesome.com/734a4e4265.js" crossorigin="anonymous"></script>
+  <script th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+
+  <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+<body>
+
+<div class="news-page-container">
+  <div class="navbar">
+    <nav th:replace="~{fragments/navbar}"></nav>
+  </div>
+  <div class="error-page-image " style="
+  align-items: center;
+   /*margin: auto;*/
+  margin-top: 90px;
+  margin-left: 575px;
+  width: 50%;
+  /*padding: 10px;*/
+">
+    <img style="
+     width: 50%;
+" src="images/ErrorImage/sad duck with white text.png" alt="sad duck image return to main page">
+
+  </div>
+  <div style="text-align: center; margin: auto; " class="return-to-home-page">
+    <a th:href="@{/}"><h1 class="text-light">Return to Home page</h1></a>
+  </div>
+</div>
+
+<!--Error!!!-->
+</body>
+</html>

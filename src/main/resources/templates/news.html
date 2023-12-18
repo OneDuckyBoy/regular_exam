@@ -16,10 +16,10 @@
     <script th:src="@{/js/news.js}"></script>
 
 </head>
-<body>
+<body th:class="'base '+${darkTheme ? 'background-dark text-light' : 'background-light '}">
 <div class="store-container">
     <div class="nav-bar" ><nav th:replace="~{fragments/navbar}"></nav></div>
-    <div class="news-text text-light"><h1>The news:</h1>
+    <div class="news-text "><h1>The news:</h1>
         <hr></div>
     <div class="news" id="news">
         <div th:each="news1:${news}">

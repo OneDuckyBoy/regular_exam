@@ -1,6 +1,7 @@
 package bg.softuni.regular_exam.controllers;
 
 import bg.softuni.regular_exam.models.dto.CheckoutDTO;
+import bg.softuni.regular_exam.schedule.Theme;
 import bg.softuni.regular_exam.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,8 @@ public class CheckoutController {
             model.addAttribute("checkoutDTO",
                     new CheckoutDTO());
         }
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
         double price = userService.GetUserByEmail().getCartPrice();
         if(!model.containsAttribute("price")){
             model.addAttribute("price",
@@ -43,6 +46,8 @@ public class CheckoutController {
     }
     @GetMapping("/cart")
     public String cart(Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
         double price = 0;
         if(!model.containsAttribute("price")){
             model.addAttribute("price",

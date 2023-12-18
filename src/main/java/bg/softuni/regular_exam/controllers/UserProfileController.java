@@ -1,6 +1,7 @@
 package bg.softuni.regular_exam.controllers;
 
 import bg.softuni.regular_exam.models.entity.ItemEntity;
+import bg.softuni.regular_exam.schedule.Theme;
 import bg.softuni.regular_exam.services.ItemService;
 import bg.softuni.regular_exam.services.UserService;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ public class UserProfileController {
 
     @GetMapping("/user-profile")
     public String user_profile(Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
 
 
         List<ItemEntity> allLiked = userService.GetLikedItemsFromUser().stream()
@@ -74,7 +76,8 @@ public class UserProfileController {
         return "user-profile";
     }
     @GetMapping(path = "/RemoveFromCart/{id}")
-    public String removeFromCart(@PathVariable("id") Long id){
+    public String removeFromCart(@PathVariable("id") Long id, Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
 
         ItemEntity item = itemService.getItem(id);
         userService.removeItemFromCart(item);

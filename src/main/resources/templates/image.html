@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+<body th:class="'base '+${darkTheme ? 'background-dark text-light' : 'background-light '}">
 <form th:action="@{/image}" method="post">
 
-  <label for="image" class="text-white font-weight-bold">Image of the product</label>
+  <label for="image" class=" font-weight-bold">Image of the product</label>
   <input id="image"
          name="image"
          type="file"

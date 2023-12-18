@@ -1,5 +1,6 @@
 package bg.softuni.regular_exam.controllers;
 
+import bg.softuni.regular_exam.schedule.Theme;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,8 @@ public class StoreController {
 
     @GetMapping("/controllers")
     public ModelAndView categories(Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
         ModelAndView mv = new ModelAndView("redirect:/");
         model.addAttribute("category","5");
         mv.addObject("category", "5");
@@ -17,6 +20,8 @@ public class StoreController {
     }
     @GetMapping("/sensors")
     public ModelAndView sensors(Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
         ModelAndView mv = new ModelAndView("redirect:/");
         model.addAttribute("category","4");
         mv.addObject("category", "4");
@@ -24,6 +29,8 @@ public class StoreController {
     }
     @GetMapping("/LEDs")
     public ModelAndView LEDs(Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
         ModelAndView mv = new ModelAndView("redirect:/");
         model.addAttribute("category","3");
         mv.addObject("category", "3");
@@ -31,6 +38,8 @@ public class StoreController {
     }
     @GetMapping("/Displays")
     public ModelAndView Displays(Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
         ModelAndView mv = new ModelAndView("redirect:/");
         model.addAttribute("category","2");
         mv.addObject("category", "2");
@@ -38,6 +47,8 @@ public class StoreController {
     }
     @GetMapping("/cablesAndOthers")
     public ModelAndView cablesAndOthers(Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
         ModelAndView mv = new ModelAndView("redirect:/");
         model.addAttribute("category","1");
         mv.addObject("category", "1");

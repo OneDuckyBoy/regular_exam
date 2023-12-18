@@ -1,7 +1,9 @@
 package bg.softuni.regular_exam.controllers;
 
 
+import bg.softuni.regular_exam.schedule.Theme;
 import bg.softuni.regular_exam.services.UserService;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,7 +24,8 @@ public class UserRestController {
     @ResponseBody
     @GetMapping(path = "/setCartPrice/{price}")
 
-    public Map<String, String> addToCart(@PathVariable("price") double price){
+    public Map<String, String> addToCart(@PathVariable("price") double price, Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
 
         userService.setUserCartPrice(price);
 

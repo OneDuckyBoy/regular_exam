@@ -20,7 +20,7 @@
   <link rel="stylesheet" type="text/css" th:href="@{/css/store.css}"/>
 
 </head>
-<body>
+<body th:class="'base '+${darkTheme ? 'background-dark text-light' : 'background-light '}">
 
 
 
@@ -30,7 +30,7 @@
 <div style="display: flex;flex-direction: row; gap: 150px;margin: 100px 200px ">
   <div class="column shop-categories " >
 
-    <div class="container-category-selector text-light">
+    <div class="container-category-selector ">
       <div class="categories" > <h1>categories</h1></div>
       <div class="line"><p><hr/></p> </div>
       <div class="all-categories"><a href=""> all categories</a></div>

@@ -5,14 +5,14 @@
 <head th:replace="~{fragments/head}">
 </head>
 
-<body>
+<body th:class="'base '+${darkTheme ? 'background-dark text-light' : 'background-light '}">
 
 <div>
     <nav th:replace="~{fragments/navbar}"></nav>
 </div>
 
 <div class="container" style="margin-top: 100px">
-    <h2 class="text-center text-white">Register User</h2>
+    <h2 class="text-center ">Register User</h2>
 
     <!-- Registration form start-->
     <form th:object="${registerDTO}"
@@ -24,7 +24,7 @@
 
         <div class="row">
             <div class="form-group col-md-12 mb-3">
-                <label for="email" class="text-white font-weight-bold">Email</label>
+                <label for="email" class=" font-weight-bold">Email</label>
                 <input id="email"
                        name="email"
                        type="text"
@@ -56,7 +56,7 @@
 
         <div class="row">
             <div class="form-group col-md-12 mb-3">
-                <label for="ConfirmPassword" class="text-white font-weight-bold">Confirm password</label>
+                <label for="ConfirmPassword" class=" font-weight-bold">Confirm password</label>
                 <input
                         id="ConfirmPassword"
                         name="ConfirmPassword"
@@ -69,7 +69,7 @@
 
         <div style="flex-direction: row;
   justify-content: center;" class="form-group" >
-            <label for="admin" class="text-white font-weight-bold">Admin</label>
+            <label for="admin" class=" font-weight-bold">Admin</label>
             <input  id="admin"
                     name="admin"
                     type="checkbox"

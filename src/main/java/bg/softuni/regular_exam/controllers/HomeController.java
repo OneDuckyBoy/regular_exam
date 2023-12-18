@@ -2,6 +2,7 @@ package bg.softuni.regular_exam.controllers;
 
 import bg.softuni.regular_exam.models.entity.ItemEntity;
 import bg.softuni.regular_exam.models.entity.UserEntity;
+import bg.softuni.regular_exam.schedule.Theme;
 import bg.softuni.regular_exam.services.ItemService;
 import bg.softuni.regular_exam.services.UserService;
 import org.springframework.security.core.Authentication;
@@ -26,7 +27,9 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String home(){
+    public String home(Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 //        System.out.println(auth+"asd");
         if (!auth.getPrincipal().equals("anonymousUser")){
@@ -38,6 +41,7 @@ public class HomeController {
 
     @GetMapping("/thanks_for_purchase/{purchaseId}")
     public String thanks_for_purchase(Model model, @PathVariable String purchaseId){
+        model.addAttribute("darkTheme", Theme.darkTheme);
 
         if(!model.containsAttribute("purchaseId")){
             model.addAttribute("purchaseId",
@@ -51,6 +55,8 @@ public class HomeController {
 
     @GetMapping("/liked")
     public String liked(Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
         List<ItemEntity> liked = userService.GetLikedItemsFromUser();
 
         if(!model.containsAttribute("liked")){
@@ -63,9 +69,11 @@ public class HomeController {
 
 
     @GetMapping("/item")///${id}
-    public ModelAndView item(
+    public ModelAndView item(Model model
 //            @PathVariable("id") int id
     ){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
         ModelAndView mv= new ModelAndView("Item");
         mv.addObject("IdOfItem"//,id+""
         );
@@ -75,20 +83,25 @@ public class HomeController {
     public ModelAndView itemWithId(Model model,
                                    @PathVariable("id") Long id
     ){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
+
         model.addAttribute("IdOfItem", id);
         ModelAndView mv= new ModelAndView("Item");
         mv.addObject("IdOfItem", id.toString());
         return mv;
     }
     @GetMapping(path = "/RemoveFromLikedInLikedPage/{id}")
-    public  String removeFromLikedInLikedPage(@PathVariable("id") Long id){
+    public  String removeFromLikedInLikedPage(@PathVariable("id") Long id,Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
 
         ItemEntity item = itemService.getItem(id);
         userService.removeItemFromLiked(item);
 
         return "redirect:/liked";
     }@GetMapping(path = "/RemoveFromLikedInProfilePage/{id}")
-    public  String removeFromLikedInProfilePage(@PathVariable("id") Long id){
+    public  String removeFromLikedInProfilePage(@PathVariable("id") Long id,Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
 
         ItemEntity item = itemService.getItem(id);
         userService.removeItemFromLiked(item);

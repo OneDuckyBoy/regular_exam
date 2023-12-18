@@ -60,3 +60,19 @@ management:
       base-path: /actuator
       exposure:
         include: "*"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

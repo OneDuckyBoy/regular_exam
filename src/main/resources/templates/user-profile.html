@@ -24,12 +24,12 @@
 </head>
 
 
-<body>
+<body th:class="'base '+${darkTheme ? 'background-dark text-light' : 'background-light text-dark!important'}">
 <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
 
 
 <div class="store-container ">
-    <div class="navbar"><nav th:replace="~{fragments/navbar}"></nav></div>
+    <div class="navbar "><nav th:replace="~{fragments/navbar}"></nav></div>
 
 <!--    <div class="shop-categories " >-->
 <!--        <br><br><br>-->
@@ -44,7 +44,7 @@
 <!--            <div class="Cables-and-others"><a href="">Cables and others</a></div>-->
 <!--        </div>-->
 <!--    </div>-->
-    <div class="container-user-info text-light" style=" margin-top: 100px;">
+    <div class="container-user-info " style=" margin-top: 100px;">
         <div class="picture" >
             <img style="
                 /*margin-top: 60px;margin-left: 50px;*/
@@ -54,7 +54,7 @@
         <div  class="line"><hr/></div>
         <div class="user-profile-text"><h1>User profile</h1></div>
     </div>
-    <div class="shop-items "style="margin-top: 60px"><h1 class="text-light" style="margin-top: 10px">Liked
+    <div class="shop-items "style="margin-top: 60px"><h1 class="" style="margin-top: 10px">Liked
         <hr></h1> <div class="items" style="margin-top: -100px">
         <div th:each="item:${liked}" class="item-container" style="border-radius: 7px;padding: 0">
             <i style="color: red; position: relative; left: 85px;top:25px;" class="fa-lg     fa-solid fa-heart"></i>
@@ -80,7 +80,7 @@
         </form>
 
     </div>
-        <h1 class="text-light">Cart
+        <h1 class="">Cart
             <hr></h1><div class="items" style="margin-top: -100px">
 
             <div th:each="item:${cart}" class="item-container" style="border-radius: 7px;padding: 0">

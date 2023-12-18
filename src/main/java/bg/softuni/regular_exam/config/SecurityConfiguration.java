@@ -3,6 +3,7 @@ package bg.softuni.regular_exam.config;
 //import bg.softuni.regular_exam.model.enums.UserRoleEnum;
 //import bg.softuni.regular_exam.repository.UserRepository;
 //import bg.softuni.regular_exam.service.impl.MobileleUserDetailsService;
+import bg.softuni.regular_exam.models.enums.UserRoleEnum;
 import bg.softuni.regular_exam.repositories.UserRepository;
 import bg.softuni.regular_exam.services.ArduinoUserDetailsService;
 import bg.softuni.regular_exam.services.impl.ArduinoUserDetailsServiceImpl;
@@ -34,16 +35,16 @@ public class SecurityConfiguration {
             // All static resources which are situated in js, images, css are available for anyone
             .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
             // Allow anyone to see the home page, the registration page and the login form
-            .requestMatchers("/","/index.html", "/login", "/register", "/login-error"
+            .requestMatchers("/","/index.html", "/login", "/register", "/login-error","/error"
 //                    ,"/logout","/checkout","/thanks_for_purchase","/image","add-news","news"
 //                    ,"Item/**"
             ).permitAll()
 //            .requestMatchers("/offers/all").permitAll()
-//            .requestMatchers("/brands").hasRole(UserRoleEnum.ADMIN.name())
+            .requestMatchers("/add-item","/add-news").hasRole(UserRoleEnum.ADMIN.name())
             // all other requests are authenticated.
             .anyRequest()
-                .permitAll()
-//                .authenticated()
+//                .permitAll()
+                .authenticated()
     )
             .formLogin(
         formLogin -> {

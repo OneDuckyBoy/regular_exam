@@ -17,9 +17,11 @@
     <script th:src="@{/js/news-page.js}"></script>
 
 </head>
-<body>
 
-<div class="news-page-container text-light" style="padding-left: 50px">
+<body th:class="'base '+${darkTheme ? 'background-dark text-light' : 'background-light'}">
+<!--<body class="background-light" th:unless="${darkTheme}">-->
+
+<div class="news-page-container " style="padding-left: 50px">
     <div class="navbar"><nav th:replace="~{fragments/navbar}"></nav></div>
     <div class="news-name " ><h1 th:text="${news.name}">Big News: Shoes are trendy now!</h1>
         <hr>

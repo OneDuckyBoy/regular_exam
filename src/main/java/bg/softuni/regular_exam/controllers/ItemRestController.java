@@ -2,8 +2,10 @@ package bg.softuni.regular_exam.controllers;
 
 import bg.softuni.regular_exam.models.entity.ItemEntity;
 import bg.softuni.regular_exam.models.entity.UserEntity;
+import bg.softuni.regular_exam.schedule.Theme;
 import bg.softuni.regular_exam.services.impl.ItemServiceImpl;
 import bg.softuni.regular_exam.services.impl.UserServiceImpl;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -74,7 +76,9 @@ public class ItemRestController {
     }
     @GetMapping(path = "/addToCart/{id}")
     @ResponseBody
-    public Map<String, String> addToCart(@PathVariable("id") Long id){
+    public Map<String, String> addToCart(@PathVariable("id") Long id, Model model){
+
+        model.addAttribute("darkTheme", Theme.darkTheme);
 
         System.out.println("test asd "+id);
 
@@ -90,7 +94,9 @@ public class ItemRestController {
 
     @GetMapping(path = "/RemoveFromCart/{id}")
     @ResponseBody
-    public Map<String, String> removeFromCart(@PathVariable("id") Long id){
+    public Map<String, String> removeFromCart(@PathVariable("id") Long id,Model model){
+
+        model.addAttribute("darkTheme", Theme.darkTheme);
 
         ItemEntity item = itemService.getItem(id);
         userService.removeItemFromCart(item);

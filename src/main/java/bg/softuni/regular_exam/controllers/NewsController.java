@@ -2,6 +2,7 @@ package bg.softuni.regular_exam.controllers;
 
 import bg.softuni.regular_exam.models.dto.NewsDTO;
 import bg.softuni.regular_exam.models.entity.NewsEntity;
+import bg.softuni.regular_exam.schedule.Theme;
 import bg.softuni.regular_exam.services.ImageService;
 import bg.softuni.regular_exam.services.NewsService;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,8 @@ public class NewsController {
     @GetMapping("/news")
 
     public String news(Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
 
         List<NewsEntity> news = newsService.GetAllNews();
         if (!model.containsAttribute("news")) {
@@ -40,6 +43,8 @@ public class NewsController {
     @GetMapping("/add-news")
 
     public String addNews(Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
 
         if(!model.containsAttribute("newsDTO")){
             model.addAttribute("newsDTO",
@@ -73,12 +78,17 @@ public class NewsController {
 
     @GetMapping("/news-page")
 
-    public String newsPage(){
+    public String newsPage(Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
         return "news-page";
     }
     @GetMapping("/news-page/{id}")
 
     public String newsPage1(@PathVariable Long id,Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
+
         System.out.println("the News id is: "+id);
         NewsEntity news = newsService.getNewsById(id);
 

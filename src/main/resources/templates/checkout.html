@@ -2,7 +2,8 @@
 <html lang="en" >
 <head th:replace="~{fragments/head}">
 </head>
-<body>
+<body th:class="'base '+${darkTheme ? 'background-dark text-light' : 'background-light text-dark  dark'}">
+
 <div>
   <nav th:replace="~{fragments/navbar}"></nav>
 </div>
@@ -57,9 +58,6 @@
 
 
 
-<!--    <p th:if="true" class="text-light">-->
-<!--      Invalid username or password.-->
-<!--    </p>-->
 
     <div class="row">
       <div class="col col-md-4">
