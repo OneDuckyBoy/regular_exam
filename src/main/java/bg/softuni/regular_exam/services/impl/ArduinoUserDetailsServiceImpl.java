@@ -15,33 +15,6 @@ import org.springframework.stereotype.Service;
 
 //@Service
 public class ArduinoUserDetailsServiceImpl implements  UserDetailsService {
-//    private final UserRepository userRepository;
-//
-//    public ArduinoUserDetailsServiceImpl(UserRepository userRepository){
-//        this.userRepository = userRepository;
-//    }
-//
-//    @Override
-//    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-//        return userRepository
-//                .findByEmail(email)
-//                .map(ArduinoUserDetailsServiceImpl::map)
-//                .orElseThrow(() -> new UsernameNotFoundException("User " + email + " not found!"));
-//    }
-//
-//    private static UserDetails map(UserEntity userEntity) {
-//        return User
-//                .withUsername(userEntity.getEmail())
-//                .password(userEntity.getPassword())
-//                .authorities(userEntity.getRoles().stream().map(ArduinoUserDetailsServiceImpl::map).toList())
-//                .build();
-//    }
-//
-//    private static GrantedAuthority map(UserRoleEntity userRoleEntity) {
-//        return new SimpleGrantedAuthority(
-//                "ROLE_" + userRoleEntity.getRole().name()
-//        );
-//    }
 
 
     private final UserRepository userRepository;
@@ -58,7 +31,7 @@ public class ArduinoUserDetailsServiceImpl implements  UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User " + email + " not found!"));
     }
 
-    private static UserDetails map(UserEntity userEntity) {
+    public static UserDetails map(UserEntity userEntity) {
 
         return User
                 .withUsername(userEntity.getEmail())
