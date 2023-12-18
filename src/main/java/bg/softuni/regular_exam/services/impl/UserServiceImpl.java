@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
         this.roleService = roleService;
     }
     @Override
-    public void register(UserRegisterDTO model) {
+    public UserEntity register(UserRegisterDTO model) {
 
         model.setPassword(passwordEncoder.encode(model.getPassword()));
         UserEntity user = modelMapper.map(model, UserEntity.class);
@@ -45,10 +45,11 @@ public class UserServiceImpl implements UserService {
             user.AddRole(roleAdmin);
         }
 
-        System.out.println();
+//        System.out.println();
         if (userRepository.findByEmail(user.getEmail()).isEmpty()){
             userRepository.save(user);
         }
+        return user;
     }
     @Override
     public UserEntity GetUserByEmail(){

@@ -40,6 +40,10 @@ dependencies {
 // https://mvnrepository.com/artifact/org.webjars/webjars-locator-core
     implementation 'org.webjars:webjars-locator-core:0.55'
 
+//    implementation 'video.bug:unlogged-sdk:0.1.19'
+//    annotationProcessor 'video.bug:unlogged-sdk:0.1.19'
+//    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+//    implementation 'com.fasterxml.jackson.core:jackson-core:2.16.0'
 
 
     runtimeOnly 'com.mysql:mysql-connector-j'
