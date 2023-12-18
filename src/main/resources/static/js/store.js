@@ -94,10 +94,14 @@ function test(items,likedItems){
             let id =
                 "item/"+
                 item.id;
-            // if (item.category.id==category){
+            console.log(category)
+            if (item.category.id==category) {
                 console.log(id)
-                        // imagePath,item,price,url,id,item
-                addItem(imagePath,name,price,id,id,item);
+                // imagePath,item,price,url,id,item
+                addItem(imagePath, name, price, id, id, item);
+            }else if ( category == null ){
+                addItem(imagePath, name, price, id, id, item);
+            }
         })
 
 

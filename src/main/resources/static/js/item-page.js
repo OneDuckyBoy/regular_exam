@@ -10,10 +10,25 @@ window.onload = function(){
 
 function load(){
 
+
+
         let itemIdP = document.getElementById("item-id");
         itemId = itemIdP.innerHTML;
         console.log(itemId)
         console.log("hi")
+    fetch("http://localhost:8080/rest/getIfItemIsLiked/"+itemId)
+        .then(response => response.json())
+        .then(r=> {
+            let addToLiked = document.getElementById("add-to-liked")
+
+            // console.log(r)
+            if (r) {
+                addToLiked.innerHTML = "Add to liked <i class=\"fa fa-heart fa-lg\" style=\"color: red\" aria-hidden=\"true\" ></i>"
+            }else {
+                addToLiked.innerHTML = "Add to liked <i class=\"fa fa-heart-o fa-lg\" style=\"color: red\" aria-hidden=\"true\" ></i>"
+
+            }
+        }).then(()=>{
 fetch('http://localhost:8080/rest/getItem/'+itemId)
     .then(response => response.json())
     .then(json =>{
@@ -41,7 +56,50 @@ fetch('http://localhost:8080/rest/getItem/'+itemId)
         price.textContent = item.price;
         // console.log(item)
         // console.log(window.location.href)
+        let id = item.id;
+        let addToCart  =document.getElementById("add-to-cart")
+        addToCart.addEventListener("click",()=>{
+            fetch('http://localhost:8080/rest/addToCart/'+id, {method: 'get'}).then(r  =>console.log("added to cart"))
 
+        })
+
+        let addToLiked = document.getElementById("add-to-liked")
+        //Add to liked <i class="fa fa-heart fa-lg" style="color: red" aria-hidden="true" ></i>
+        addToLiked.addEventListener("click",()=>{
+            fetch("http://localhost:8080/rest/getIfItemIsLiked/"+id)
+                .then(response => response.json())
+                .then(r=> {
+
+                    // console.log(r)
+                    if (!r) {
+                        addToLiked.innerHTML = "Add to liked <i class=\"fa fa-heart fa-lg\" style=\"color: red\" aria-hidden=\"true\" ></i>"
+                        LikeItem(id)
+                    }else {
+                        addToLiked.innerHTML = "Add to liked <i class=\"fa fa-heart-o fa-lg\" style=\"color: red\" aria-hidden=\"true\" ></i>"
+                        UnlikeItem(id)
+                    }
+                })
+
+        })
+        function  LikeItem(id){
+            // id = id.substring(5)
+            console.log("like "+id)
+            fetch('http://localhost:8080/rest/addToLiked/'+id)
+                .then(response => response.json())
+                .then(json =>{
+
+                    }
+                )
+        }function  UnlikeItem(id){
+            console.log("unlike "+id)
+            // id = id.substring(5)
+            let liked ;
+            fetch('http://localhost:8080/rest/RemoveFromLiked/'+id)
+                .then(response => response.json())
+                .then(json =>{
+                    }
+                )
+        }
 
 
             // console.log(json)
@@ -52,4 +110,5 @@ fetch('http://localhost:8080/rest/getItem/'+itemId)
             // console.log(imageLocation1)
         }
     )
+    })
 }
