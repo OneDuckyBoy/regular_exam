@@ -67,6 +67,15 @@
         </div>
         <small  th:errors="*{confirmPassword}" th:errorclass="is-invalid" style="color: red"  ><h1>email error message</h1></small>
 
+        <div style="flex-direction: row;
+  justify-content: center;" class="form-group" >
+            <label for="admin" class="text-white font-weight-bold">Admin</label>
+            <input  id="admin"
+                    name="admin"
+                    type="checkbox"
+                    th:checked="${registerDTO.admin}"
+            />
+        </div>
 
         <div class="row">
             <div class="col col-md-4">

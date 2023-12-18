@@ -121,4 +121,8 @@ public class UserEntity extends BaseEntity{
         likedItems.remove(item);
     }
 
+    public void AddRole(UserRoleEntity role){
+        roles.add(role);
+    }
+
 }

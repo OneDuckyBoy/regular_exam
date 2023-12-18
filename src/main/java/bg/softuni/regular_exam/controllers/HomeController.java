@@ -1,6 +1,7 @@
 package bg.softuni.regular_exam.controllers;
 
 import bg.softuni.regular_exam.models.entity.ItemEntity;
+import bg.softuni.regular_exam.models.entity.UserEntity;
 import bg.softuni.regular_exam.services.ItemService;
 import bg.softuni.regular_exam.services.UserService;
 import org.springframework.security.core.Authentication;
@@ -42,6 +43,9 @@ public class HomeController {
             model.addAttribute("purchaseId",
                     purchaseId);
         }
+        UserEntity user = userService.GetUserByEmail();
+        user.setCartPrice(0);
+        userService.saveUser(user);
         return "thanks_for_purchase";
     }
 

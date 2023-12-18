@@ -3,7 +3,10 @@ package bg.softuni.regular_exam.services.impl;
 import bg.softuni.regular_exam.models.dto.UserRegisterDTO;
 import bg.softuni.regular_exam.models.entity.ItemEntity;
 import bg.softuni.regular_exam.models.entity.UserEntity;
+import bg.softuni.regular_exam.models.entity.UserRoleEntity;
+import bg.softuni.regular_exam.models.enums.UserRoleEnum;
 import bg.softuni.regular_exam.repositories.UserRepository;
+import bg.softuni.regular_exam.services.RoleService;
 import bg.softuni.regular_exam.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.Authentication;
@@ -20,18 +23,29 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
 
+    private final RoleService roleService;
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper, RoleService roleService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
+        this.roleService = roleService;
     }
     @Override
     public void register(UserRegisterDTO model) {
 
         model.setPassword(passwordEncoder.encode(model.getPassword()));
         UserEntity user = modelMapper.map(model, UserEntity.class);
+        user.setLikedItems(new ArrayList<>());
+        user.setItemsInCart(new ArrayList<>());
+        UserRoleEntity roleUser = roleService.getRoleFromEnum(UserRoleEnum.USER);
+        user.AddRole(roleUser);
+        if (model.isAdmin()){
+            UserRoleEntity roleAdmin =roleService.getRoleFromEnum(UserRoleEnum.ADMIN);
+            user.AddRole(roleAdmin);
+        }
 
+        System.out.println();
         if (userRepository.findByEmail(user.getEmail()).isEmpty()){
             userRepository.save(user);
         }
