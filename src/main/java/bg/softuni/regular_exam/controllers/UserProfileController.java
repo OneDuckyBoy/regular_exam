@@ -1,6 +1,7 @@
 package bg.softuni.regular_exam.controllers;
 
 import bg.softuni.regular_exam.models.entity.ItemEntity;
+import bg.softuni.regular_exam.models.entity.UserEntity;
 import bg.softuni.regular_exam.schedule.Theme;
 import bg.softuni.regular_exam.services.ItemService;
 import bg.softuni.regular_exam.services.UserService;
@@ -8,9 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class UserProfileController {
@@ -72,6 +76,11 @@ public class UserProfileController {
             model.addAttribute("cart",
                     cart);
         }
+        Optional<UserEntity> userEntity = userService.GetUserByEmailOptional();
+        boolean present = userEntity.isPresent();
+        model.addAttribute("present",present);
+        if (present)
+        model.addAttribute("user",userEntity.get());
 
         return "user-profile";
     }
@@ -84,5 +93,24 @@ public class UserProfileController {
 
 
         return "redirect:/user-profile";
+    }@GetMapping(path = "/change-username")
+    public String changeUsername( Model model){
+        String username ="";
+        model.addAttribute("username",username);
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
+
+
+        return "/change-username";
+    }@PostMapping(path = "/change-username")
+    public String changeUsernamePost(@RequestParam("username")String username , Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+        UserEntity user = userService.GetUserByEmail();
+        user.setUsername(username);
+        userService.saveUser(user);
+
+
+        return "redirect:/user-profile";
     }
+
 }

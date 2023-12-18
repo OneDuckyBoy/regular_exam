@@ -36,6 +36,20 @@
 <!--                    Email is required.-->
 <!--                </p>-->
             </div>
+        </div><div class="row">
+            <div class="form-group col-md-12 mb-3">
+                <label for="username" class=" font-weight-bold">Username</label>
+                <input id="username"
+                       name="username"
+                       type="text"
+                       class="form-control"
+                       placeholder="Username"/>
+                <small th:errors="*{username}" th:errorclass="is-invalid" class ="" style="color: red" >email error message</small>
+
+<!--                <p class="errors alert alert-danger">-->
+<!--                    Email is required.-->
+<!--                </p>-->
+            </div>
         </div>
 
         <div class="row">

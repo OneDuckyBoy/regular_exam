@@ -63,6 +63,7 @@ public class UserRegisterDTO {
     @Length(min = 2,max = 20,message = "Password length must be between 3 and 20 characters!") //max 20
     private String confirmPassword;
 
+    private String username;
 
     public boolean isAdmin() {
         return admin;
@@ -74,4 +75,11 @@ public class UserRegisterDTO {
 
     private boolean admin;
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

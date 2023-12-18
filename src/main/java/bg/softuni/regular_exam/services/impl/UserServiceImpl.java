@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -36,8 +37,7 @@ public class UserServiceImpl implements UserService {
 
         model.setPassword(passwordEncoder.encode(model.getPassword()));
         UserEntity user = modelMapper.map(model, UserEntity.class);
-        user.setLikedItems(new ArrayList<>());
-        user.setItemsInCart(new ArrayList<>());
+        modelMapper.map(model, user);
         UserRoleEntity roleUser = roleService.getRoleFromEnum(UserRoleEnum.USER);
         user.AddRole(roleUser);
         if (model.isAdmin()){
@@ -55,6 +55,12 @@ public class UserServiceImpl implements UserService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String email = auth.getName();
         return userRepository.findByEmail(email).get();
+    }
+    @Override
+    public Optional<UserEntity> GetUserByEmailOptional(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName();
+        return userRepository.findByEmail(email);
     }
 
     @Override

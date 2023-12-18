@@ -5,11 +5,14 @@ import bg.softuni.regular_exam.models.entity.ItemEntity;
 import bg.softuni.regular_exam.models.entity.UserEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
     public void register(UserRegisterDTO userRegisterDTO);
 
     UserEntity GetUserByEmail();
+
+    Optional<UserEntity> GetUserByEmailOptional();
 
     void saveItemToCart(ItemEntity item);
 

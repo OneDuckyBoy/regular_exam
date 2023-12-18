@@ -49,8 +49,14 @@
             <img style="
                 /*margin-top: 60px;margin-left: 50px;*/
                 width: 300px;border-radius: 1000px" src="images/uploads/ducki the duck.jpg" alt="">
+
         </div>
-        <div class="email"><th:block sec:authentication="name" >asd</th:block> </div>
+<!--        sec:authentication="name"-->
+
+        <div class="email"><th:block th:if="${present}" th:text="${user.username}">asd</th:block>
+            <div class=""><th:block ><a class="white" th:href="@{/change-username}">Change Username</a></th:block> </div></div>
+        <br>
+
         <div  class="line"><hr/></div>
         <div class="user-profile-text"><h1>User profile</h1></div>
     </div>
