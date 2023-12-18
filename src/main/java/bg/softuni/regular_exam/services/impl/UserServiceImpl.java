@@ -110,7 +110,40 @@ public class UserServiceImpl implements UserService {
     }@Override
     public List<ItemEntity> GetCartItemsFromUser(){
         UserEntity user = GetUserByEmail();
-        return user.getItemsInCart();
+        List<ItemEntity> itemsInCart = user.getItemsInCart();
+
+        return itemsInCart;
+
+    }
+
+    @Override
+    public List<ItemEntity> GetLikedCartItemsFromUser() {
+        UserEntity user = GetUserByEmail();
+        List<ItemEntity> itemsInCart = user.getItemsInCart();
+        List<ItemEntity> likedItems = user.getLikedItems();
+        List<ItemEntity> x = new ArrayList<>();
+        for (ItemEntity item : itemsInCart) {
+
+            for (ItemEntity likedItem : likedItems) {
+                if (item.getId().equals(likedItem.getId())){
+                    x.add(item);
+                }
+            }
+//            if (present){
+//
+//            }
+        }
+//        likedItemsInCart.retainAll(user.getLikedItems());
+        System.out.println();
+        return x;
+    }
+
+    @Override
+    public void setUserCartPrice(double price) {
+        UserEntity user = GetUserByEmail();
+        user.setCartPrice(price);
+
+        userRepository.save(user);
 
     }
 }

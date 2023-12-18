@@ -40,6 +40,17 @@ public class UserEntity extends BaseEntity{
     private String email;
 
     private String password;
+    private double cartPrice;
+
+
+    public double getCartPrice() {
+        return cartPrice;
+    }
+
+    public void setCartPrice(double cartPrice) {
+        this.cartPrice = cartPrice;
+    }
+
 
     public List<UserRoleEntity> getRoles() {
         return roles;

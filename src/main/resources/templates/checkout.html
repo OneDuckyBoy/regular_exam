@@ -7,11 +7,12 @@
   <nav th:replace="~{fragments/navbar}"></nav>
 </div>
 
-<div class="container">
-  <br>
-  <br>
+<div class="container" style="margin-top: 160px">
+
   <h2 class="text-center text-white">Checkout</h2>
+  <h2 class="text-center text-white" th:text="'Cart price: '+${price}+' lv.'">price</h2>
   <form
+
           th:object="${checkoutDTO}"
           th:method="post"
         th:action="@{/checkout}"
@@ -22,8 +23,10 @@
              name="name"
              type="text"
              class="form-control"
-             placeholder="full name"/>
-<!--      <small th:errors="*{name}" th:errorclass="is-invalid"  style="color: red" >email error message</small>-->
+             placeholder="full name"
+              th:field="${checkoutDTO.name}"
+      />
+      <small th:errors="*{name}" th:errorclass="is-invalid"  style="color: red" >email error message</small>
 
     </div>
     <div class="form-group">
@@ -32,8 +35,11 @@
              name="address"
              type="text"
              class="form-control"
-             placeholder="address"/>
-<!--      <small th:errors="*{address}" th:errorclass="is-invalid" class ="" style="color: red" >email error message</small>-->
+             placeholder="address"
+             th:field="${checkoutDTO.address}"
+
+      />
+      <small th:errors="*{address}" th:errorclass="is-invalid" class ="" style="color: red" >email error message</small>
 
     </div>
     <div class="form-group">
@@ -42,11 +48,12 @@
              name="number"
              type="text"
              class="form-control"
-             placeholder="phone number"/>
+             placeholder="phone number"
+      th:field="${checkoutDTO.number}"/>
+      <small th:errors="*{number}"  class ="" style="color: red" >email error message</small>
 
 
     </div>
-<!--    <small th:errors="*{number}"  class ="" style="color: red" >email error message</small>-->
 
 
 

@@ -30,8 +30,9 @@ public class UserProfileController {
         List<ItemEntity> allLiked = userService.GetLikedItemsFromUser().stream()
                 .distinct()
                 .toList();
+        List<ItemEntity> liked = new ArrayList<>();
+
         if (!allLiked.isEmpty()){
-            List<ItemEntity> liked = new ArrayList<>();
             int counter =0;
 
             for (ItemEntity itemEntity : allLiked) {
@@ -41,17 +42,19 @@ public class UserProfileController {
                     break;
                 }
             }
-            if(!model.containsAttribute("liked")){
-                model.addAttribute("liked",
-                        liked);
-            }
+
+        }
+        if(!model.containsAttribute("liked")){
+            model.addAttribute("liked",
+                    liked);
         }
 
         List<ItemEntity> allCart = userService.GetCartItemsFromUser().stream()
                 .distinct()
                 .toList();
+        List<ItemEntity> cart = new ArrayList<>();
+
         if (!allCart.isEmpty()) {
-            List<ItemEntity> cart = new ArrayList<>();
             int counter =0;
             for (ItemEntity itemEntity : allCart) {
                 counter++;
@@ -61,10 +64,11 @@ public class UserProfileController {
                 }
             }
 
-            if (!model.containsAttribute("cart")) {
-                model.addAttribute("cart",
-                        cart);
-            }
+
+        }
+        if (!model.containsAttribute("cart")) {
+            model.addAttribute("cart",
+                    cart);
         }
 
         return "user-profile";

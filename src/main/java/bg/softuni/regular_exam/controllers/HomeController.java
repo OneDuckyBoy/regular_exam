@@ -33,13 +33,15 @@ public class HomeController {
         }
         return "index";
     }
-    @GetMapping("/cart")
-    public String cart(){
-        return "cart";
-    }
 
-    @GetMapping("/thanks_for_purchase")
-    public String thanks_for_purchase(){
+
+    @GetMapping("/thanks_for_purchase/{purchaseId}")
+    public String thanks_for_purchase(Model model, @PathVariable String purchaseId){
+
+        if(!model.containsAttribute("purchaseId")){
+            model.addAttribute("purchaseId",
+                    purchaseId);
+        }
         return "thanks_for_purchase";
     }
 
@@ -89,6 +91,7 @@ public class HomeController {
 
         return "redirect:/user-profile";
     }
+
 
 
 

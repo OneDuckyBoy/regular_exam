@@ -61,6 +61,16 @@ public class ItemRestController {
 
 
         return itemService.getAllItems();
+    } @GetMapping(path = "/getItemsInCart",produces = "application/json")
+    public List<ItemEntity> getItemsInCart(){
+
+
+        return userService.GetCartItemsFromUser();
+    }@GetMapping(path = "/getLikedItemsInCart",produces = "application/json")
+    public List<ItemEntity> getLikedItemsInCart(){
+
+
+        return userService.GetLikedCartItemsFromUser();
     }
     @GetMapping(path = "/addToCart/{id}")
     @ResponseBody
@@ -71,6 +81,19 @@ public class ItemRestController {
         ItemEntity item = itemService.getItem(id);
         userService.saveItemToCart(item);
 
+
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "success");
+        response.put("message", "Action completed successfully");
+        return response;
+    }
+
+    @GetMapping(path = "/RemoveFromCart/{id}")
+    @ResponseBody
+    public Map<String, String> removeFromCart(@PathVariable("id") Long id){
+
+        ItemEntity item = itemService.getItem(id);
+        userService.removeItemFromCart(item);
 
         Map<String, String> response = new HashMap<>();
         response.put("status", "success");
