@@ -53,12 +53,12 @@
         </div>
 <!--        sec:authentication="name"-->
 
-        <div class="email"><th:block th:if="${present}" th:text="${user.username}">asd</th:block>
-            <div class=""><th:block ><a class="white" th:href="@{/change-username}">Change Username</a></th:block> </div></div>
+        <div  class="email"><th:block th:class="${darkTheme ? 'white ' : 'dark '}" th:if="${present}" th:text="${user.username}">asd</th:block>
+            <div class=""><th:block ><a class="white" th:class="${darkTheme ? 'white ' : 'dark '}"  th:href="@{/change-username}">Change Username</a></th:block> </div></div>
         <br>
 
         <div  class="line"><hr/></div>
-        <div class="user-profile-text"><h1>User profile</h1></div>
+        <div th:class="${darkTheme ? 'white ' : 'dark '}" class="user-profile-text"><h1>User profile</h1></div>
     </div>
     <div class="shop-items "style="margin-top: 60px"><h1 class="" style="margin-top: 10px">Liked
         <hr></h1> <div class="items" style="margin-top: -100px">

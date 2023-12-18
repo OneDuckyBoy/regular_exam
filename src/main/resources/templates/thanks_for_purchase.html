@@ -31,19 +31,19 @@
   <div class="column shop-categories " >
 
     <div class="container-category-selector ">
-      <div class="categories" > <h1>categories</h1></div>
+      <div class="categories" > <h1 th:classappend="${darkTheme ? 'white ' : 'dark '}">categories</h1></div>
       <div class="line"><p><hr/></p> </div>
-      <div class="all-categories"><a href=""> all categories</a></div>
-      <div class="controllers"><a href=""> controllers</a></div>
-      <div class="sensors"><a href=""> sensors</a></div>
-      <div class="LEDs"><a href="">LEDs</a></div>
-      <div class="Displays"><a href="">Displays</a></div>
-      <div class="Cables-and-others"><a href="">Cables and others</a></div>
+      <div class="all-categories"><a th:classappend="${darkTheme ? 'white ' : 'dark '}" href=""> all categories</a></div>
+      <div class="controllers"><a th:classappend="${darkTheme ? 'white ' : 'dark '}" href=""> controllers</a></div>
+      <div class="sensors"><a th:classappend="${darkTheme ? 'white ' : 'dark '}" href=""> sensors</a></div>
+      <div class="LEDs"><a th:classappend="${darkTheme ? 'white ' : 'dark '}" href="">LEDs</a></div>
+      <div class="Displays"><a th:classappend="${darkTheme ? 'white ' : 'dark '}" href="">Displays</a></div>
+      <div class="Cables-and-others"><a th:classappend="${darkTheme ? 'white ' : 'dark '}" href="">Cables and others</a></div>
     </div>
   </div>
   <div class="column" style="display: inline; font-size: 60px;background-color: #d8ecf3; border-radius: 20px;margin: 20px 0px; width: 1500px;padding: 50px">
-    <h1 style="display: block; font-size: 60px;background-color: #d8ecf3; border-radius: 20px;margin: 20px 0px">Thank you for your purchase</h1>
-    <h2 style="display: block; font-size: 60px;background-color: #d8ecf3; border-radius: 20px;margin: 20px 0px" th:text="'purchace id: '+${purchaseId}">Thank you for your purchase</h2>
+    <h1 style="display: block; font-size: 60px;background-color: #d8ecf3; border-radius: 20px;margin: 20px 0px" th:classappend="${darkTheme ? 'dark ' : 'dark '}">Thank you for your purchase</h1>
+    <h2 style="display: block; font-size: 60px;background-color: #d8ecf3; border-radius: 20px;margin: 20px 0px" th:classappend="${darkTheme ? 'dark ' : 'dark '}"  th:text="'purchace id: '+${purchaseId}">Thank you for your purchase</h2>
     <br>
     <h2 align="center"><a style="color: #212529" th:href="@{/}">go to store page</a></h2>
     <h2 align="center"><a style="color: #212529" th:href="@{/news}">or go to the news</a></h2>

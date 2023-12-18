@@ -6,10 +6,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class Schedule {
 //    @Scheduled(fixedDelay = 10000)
-//    public void scheduleFixedDelayTask() {
-//        System.out.println(
-//                "Fixed delay task - " + System.currentTimeMillis() / 1000);
-//        Theme.darkTheme = !Theme.darkTheme;
-//        System.out.println(Theme.darkTheme);
-//    }
+    @Scheduled(cron = "0 0 8 * * ?")
+    public void scheduleFixedDelayTask() {
+        System.out.println(
+                "Fixed delay task - " + System.currentTimeMillis() / 1000);
+        Theme.darkTheme = false; //!Theme.darkTheme;
+        System.out.println(Theme.darkTheme);
+    }
+    @Scheduled( cron="0 0 20 * * ?")
+    public void scheduleFixedDelayTask1() {
+        System.out.println(
+                "Fixed delay task - " + System.currentTimeMillis() / 1000);
+        Theme.darkTheme = true; //!Theme.darkTheme;
+        System.out.println(Theme.darkTheme);
+    }
 }

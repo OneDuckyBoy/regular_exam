@@ -34,14 +34,14 @@
     <div class="column shop-categories " >
 
         <div class="container-category-selector ">
-            <div class="categories" > <h1>categories</h1></div>
+            <div class="categories" > <h1 th:class="${darkTheme ? 'white ' : 'dark '}">categories</h1></div>
             <div class="line"><p><hr/></p> </div>
-            <div class="all-categories"><a href=""> all categories</a></div>
-            <div class="controllers"><a href=""> controllers</a></div>
-            <div class="sensors"><a href=""> sensors</a></div>
-            <div class="LEDs"><a href="">LEDs</a></div>
-            <div class="Displays"><a href="">Displays</a></div>
-            <div class="Cables-and-others"><a href="">Cables and others</a></div>
+            <div class="all-categories"><a th:class="${darkTheme ? 'white ' : 'dark '}" href=""> all categories</a></div>
+            <div class="controllers"><a th:class="${darkTheme ? 'white ' : 'dark '}"href=""> controllers</a></div>
+            <div class="sensors"><a th:class="${darkTheme ? 'white ' : 'dark '}"href=""> sensors</a></div>
+            <div class="LEDs"><a th:class="${darkTheme ? 'white ' : 'dark '}"href="">LEDs</a></div>
+            <div class="Displays"><a th:class="${darkTheme ? 'white ' : 'dark '}" href="">Displays</a></div>
+            <div class="Cables-and-others"><a th:class="${darkTheme ? 'white ' : 'dark '}" href="">Cables and others</a></div>
         </div>
     </div>
     <div class="column" style="display: inline; font-size: 60px;background-color: #d8ecf3; border-radius: 20px;margin: 20px 0px; width: 1500px;padding: 50px">
