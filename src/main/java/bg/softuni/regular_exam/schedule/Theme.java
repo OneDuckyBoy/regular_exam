@@ -4,5 +4,5 @@ import org.springframework.stereotype.Component;
 
 @Component
 public  class Theme {
-    public static boolean darkTheme = true;
+    public static boolean darkTheme = false;
 }
