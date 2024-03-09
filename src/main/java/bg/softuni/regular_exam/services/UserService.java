@@ -16,6 +16,8 @@ public interface UserService {
 
     void saveItemToCart(ItemEntity item);
 
+    void removeItemsFromCart();
+
     void saveItemToLiked(ItemEntity item);
 
     void saveUser(UserEntity user);

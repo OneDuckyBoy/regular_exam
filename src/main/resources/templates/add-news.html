@@ -6,7 +6,7 @@
 <!--&gt;-->
 <head th:fragment="head">
   <meta charset="UTF-8">
-  <title>Arduino marketplace</title>
+  <title>Duck marketplace</title>
   <link rel="stylesheet" th:href="@{/css/reset-css.css}"/>
   <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
   <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
@@ -61,6 +61,8 @@
              th:field="${newsDTO.image}"
              th:errorclass="'is-invalid bg-danger'"
       />
+      <small th:errors="${newsDTO.image}" th:errorclass="is-invalid" class ="" style="color: red" >email error message</small>
+
     </div>
 
     <!--    <p th:if="${bad_credentials}" class="errors alert alert-danger">-->

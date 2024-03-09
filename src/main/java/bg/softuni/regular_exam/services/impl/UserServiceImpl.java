@@ -72,6 +72,16 @@ public class UserServiceImpl implements UserService {
         }
         userRepository.save(user);
     }
+
+    @Override
+    public void removeItemsFromCart() {
+        UserEntity user = GetUserByEmail();
+        var list= new ArrayList<ItemEntity>();
+
+        user.setItemsInCart(list);
+        userRepository.save(user);
+    }
+
     @Override
     public void saveItemToLiked(ItemEntity item) {
         UserEntity user = GetUserByEmail();

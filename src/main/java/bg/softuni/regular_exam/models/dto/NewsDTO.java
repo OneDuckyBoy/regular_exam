@@ -3,6 +3,9 @@ package bg.softuni.regular_exam.models.dto;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
 public class NewsDTO {
 
 
@@ -10,6 +13,7 @@ public class NewsDTO {
     private String name;
     @Length(min =2,message = "The news description must more than 2 letters!")
     private String description;
+//    @NotEmpty(message = "The image cannot be blank!")
     private MultipartFile image;
 
     public String getName() {

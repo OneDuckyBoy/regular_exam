@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.util.Random;
 
 @Service
 public class ImageServiceImpl implements ImageService {
@@ -23,14 +24,27 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public ImagesEntity saveImage(MultipartFile file) throws IOException {
-//        String path = "src/main/resources/static/images/uploads/"+file.getOriginalFilename();
-        String path = "C:\\Users\\stili\\Documents\\Softuni\\Spring Web Advanced\\regular_exam\\src\\main\\resources\\static\\images\\uploads\\"+file.getOriginalFilename();
-        File file1 = new File(path);
-        try (OutputStream os = new FileOutputStream(file1)) {
+        String uploadLocation = getClass().getClassLoader().getResource("static/images/uploads").toString()
+                // remove file:/ from the beginning
+                .substring(6);
+
+        String fileName = file.getOriginalFilename();
+        System.out.println("The image name is "+ fileName);
+        if (fileName.isEmpty()){
+            fileName +=new Random().nextInt();
+        }
+        //todo if the image is empty, or doesnt have a name it should throw error, or put a default image with default name
+        //todo check if adding the same name throws an error
+
+        String path = uploadLocation + "/" + fileName;
+
+
+        try (OutputStream os = new FileOutputStream(fileName)) {
             os.write(file.getBytes());
         }
 
         ImagesEntity image = new ImagesEntity();
+
         image.setImageLocation("images/uploads/"+file.getOriginalFilename());
         if (imageRepository.findFirstByImageLocationEndingWith(image.getImageLocation()).isEmpty()){
 

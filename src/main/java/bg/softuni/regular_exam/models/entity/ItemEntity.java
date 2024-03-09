@@ -15,7 +15,7 @@ import java.lang.reflect.Type;
         private String name;
 
         private double price;
-        @Column(columnDefinition = "text")
+        @Column()
         private String description;
         @OneToOne
         @JoinColumn(name = "image_id")

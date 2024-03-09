@@ -4,6 +4,7 @@ import bg.softuni.regular_exam.models.dto.CheckoutDTO;
 import bg.softuni.regular_exam.schedule.Theme;
 import bg.softuni.regular_exam.services.UserService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,7 +18,6 @@ import java.util.UUID;
 
 @Controller
 public class CheckoutController {
-
     private final UserService userService;
 
     public CheckoutController(UserService userService) {
@@ -77,7 +77,8 @@ public class CheckoutController {
             return new ModelAndView("/checkout");
         }
 
-
+        userService.removeItemsFromCart();
+        userService.setUserCartPrice(0);
         return mv;
     }
 }
