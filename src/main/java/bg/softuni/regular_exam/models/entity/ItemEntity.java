@@ -17,7 +17,7 @@ import java.lang.reflect.Type;
         private double price;
         @Column()
         private String description;
-        @OneToOne
+        @ManyToOne
         @JoinColumn(name = "image_id")
         private ImagesEntity image;
 

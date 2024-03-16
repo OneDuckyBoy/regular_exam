@@ -7,6 +7,7 @@ import com.sun.jna.platform.win32.WinUser;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.swing.text.Element;
 import java.io.*;
 import java.util.Random;
 
@@ -50,15 +51,19 @@ public class ImageServiceImpl implements ImageService {
         image.setImageLocation(
                 "images/uploads/"
                 +file.getOriginalFilename());
+        ImagesEntity img1;
         System.out.println("the image location is: "+ image.getImageLocation());
+        var asd = imageRepository.findFirstByImageLocationEndingWith(fileName);
+        if (asd.isEmpty()){
+            if (!imageRepository.existsById(asd.get().getId())){
+                img1 = imageRepository.saveAndFlush(image);
 
-        if (imageRepository.findFirstByImageLocationEndingWith(image.getImageLocation()).isEmpty()){
-
-            image = imageRepository.saveAndFlush(image);
+            }
+            img1 = imageRepository.findById(asd.get().getId()).get();
         }else {
-            image = imageRepository.findFirstByImageLocationEndingWith(image.getImageLocation()).get();
+            img1 = asd.get();
         }
-        return image;
+        return img1;
     }
 
 }
