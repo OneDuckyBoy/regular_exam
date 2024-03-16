@@ -42,12 +42,17 @@ public class ImageServiceImpl implements ImageService {
             image =imageRepository.findById(1);//+=new Random().nextInt();
             fileName= image.getImageLocation().replace(    "images/uploads/","");
         }else {
+            fileName = fileName.hashCode()+"name"+fileName.substring(fileName.lastIndexOf('.'));
             String Path_01 = System.getProperty("user.dir")+"\\build\\resources\\main\\static\\images\\uploads\\";
             try (OutputStream os = new FileOutputStream(Path_01+fileName)) {
                 os.write(file.getBytes());
             }
         }
+
         ImagesEntity img1;
+        image.setImageLocation(
+                "images/uploads/"
+                        +fileName);
         var asd = imageRepository.findFirstByImageLocationEndingWith(fileName);
         if (asd.isEmpty()){
 
@@ -57,7 +62,7 @@ public class ImageServiceImpl implements ImageService {
         }else {
             img1 = asd.get();
         }
-        return img1;
+       return img1;
     }
 
 }
