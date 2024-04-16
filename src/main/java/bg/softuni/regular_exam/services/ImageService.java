@@ -10,4 +10,5 @@ public interface ImageService {
     public ImagesEntity getImageById(int id);
 
     public ImagesEntity saveImage(MultipartFile file) throws IOException;
+
 }

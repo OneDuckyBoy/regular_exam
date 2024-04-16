@@ -14,6 +14,7 @@ import java.util.List;
 @Table(name = "users")
 public class UserEntity extends BaseEntity{
     public UserEntity() {
+            roles = new ArrayList<>();
     }
 
     public UserEntity(String email, String password) {

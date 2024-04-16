@@ -138,7 +138,8 @@ public class UserServiceImpl implements UserService {
         UserEntity user = GetUserByEmail();
         return user.getLikedItems();
 
-    }@Override
+    }
+    @Override
     public List<ItemEntity> GetCartItemsFromUser(){
         UserEntity user = GetUserByEmail();
         List<ItemEntity> itemsInCart = user.getItemsInCart();

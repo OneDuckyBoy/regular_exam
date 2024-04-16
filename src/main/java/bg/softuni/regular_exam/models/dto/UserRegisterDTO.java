@@ -27,6 +27,20 @@ public class UserRegisterDTO {
         this.confirmPassword = confirmPassword;
     }
 
+    @NotBlank(message = "Email can not be empty")
+    @Email(message = "the email is invalid")
+    private String email;
+    //        @NotNull
+    @Length(min = 2,max = 20,message = "Password length must be between 3 and 20 characters!") //max 20
+
+    private String password;
+    //    @NotNull
+    @Length(min = 2,max = 20,message = "Password length must be between 3 and 20 characters!") //max 20
+    private String confirmPassword;
+
+    private String username;
+    private boolean admin;
+
     public String getEmail() {
         return email;
     }
@@ -52,18 +66,6 @@ public class UserRegisterDTO {
     }
 
     //    @NotNull
-    @NotBlank(message = "Email can not be empty")
-    @Email(message = "the email is invalid")
-    private String email;
-//        @NotNull
-    @Length(min = 2,max = 20,message = "Password length must be between 3 and 20 characters!") //max 20
-
-    private String password;
-//    @NotNull
-    @Length(min = 2,max = 20,message = "Password length must be between 3 and 20 characters!") //max 20
-    private String confirmPassword;
-
-    private String username;
 
     public boolean isAdmin() {
         return admin;
@@ -73,7 +75,6 @@ public class UserRegisterDTO {
         this.admin = admin;
     }
 
-    private boolean admin;
 
     public String getUsername() {
         return username;

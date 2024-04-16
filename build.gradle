@@ -46,6 +46,7 @@ dependencies {
 //    implementation 'com.fasterxml.jackson.core:jackson-core:2.16.0'
 // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
     implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.4'
+    testImplementation 'junit:junit:4.13.1'
 
 
     runtimeOnly 'com.mysql:mysql-connector-j'

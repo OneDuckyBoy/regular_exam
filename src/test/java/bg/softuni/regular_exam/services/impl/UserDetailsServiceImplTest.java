@@ -9,9 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.reactivestreams.Publisher;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -20,9 +18,9 @@ import java.util.Optional;
 import static reactor.core.publisher.Mono.when;
 
 @ExtendWith(MockitoExtension.class)
-class ArduinoUserDetailsServiceImplTest {
+class UserDetailsServiceImplTest {
 
-    private ArduinoUserDetailsServiceImpl arduinoUserDetailsService;
+    private UserDetailsServiceImpl userDetailsService;
     private FilesStorageServiceImpl filesStorageService;
     private final Path root = Paths.get("src/main/resources/static/images/uploads/");
     @Mock
@@ -33,11 +31,11 @@ class ArduinoUserDetailsServiceImplTest {
 
     @BeforeEach
     void Setup (){
-        arduinoUserDetailsService = new ArduinoUserDetailsServiceImpl(mockUserRepository);
+        userDetailsService = new UserDetailsServiceImpl(mockUserRepository);
     }
     @Test
-    void testInitializingArduinoUserDetailsServiceImpl(){
-        new ArduinoUserDetailsServiceImpl(mockUserRepository);
+    void testInitializingUserDetailsServiceImpl(){
+        new UserDetailsServiceImpl(mockUserRepository);
     }
     @Test
     void testLoadUserByUsername(){
@@ -51,7 +49,7 @@ class ArduinoUserDetailsServiceImplTest {
         Mockito.when(mockUserRepository.findByEmail(user.getEmail())).thenReturn(Optional.of(user));
 
 
-        UserDetails userDetails = arduinoUserDetailsService.loadUserByUsername(email);
+        UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
 
         Assertions.assertEquals("test@test.com",user.getEmail(),"Wrong email");

@@ -1,12 +1,8 @@
 package bg.softuni.regular_exam.config;
 
-//import bg.softuni.regular_exam.model.enums.UserRoleEnum;
-//import bg.softuni.regular_exam.repository.UserRepository;
-//import bg.softuni.regular_exam.service.impl.MobileleUserDetailsService;
 import bg.softuni.regular_exam.models.enums.UserRoleEnum;
 import bg.softuni.regular_exam.repositories.UserRepository;
-import bg.softuni.regular_exam.services.ArduinoUserDetailsService;
-import bg.softuni.regular_exam.services.impl.ArduinoUserDetailsServiceImpl;
+import bg.softuni.regular_exam.services.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -57,7 +53,6 @@ public class SecurityConfiguration {
               .passwordParameter("password")
               .defaultSuccessUrl("/")
               .failureForwardUrl("/login-error");
-          //todo roles
         }
     )
 
@@ -85,7 +80,7 @@ public class SecurityConfiguration {
 
   @Bean
   public UserDetailsService userDetailsService(UserRepository userRepository) {
-    return new ArduinoUserDetailsServiceImpl(userRepository);
+    return new UserDetailsServiceImpl(userRepository);
   }
 
   @Bean

@@ -29,37 +29,28 @@ public class ImageServiceImpl implements ImageService {
         String uploadLocation = getClass().getClassLoader().getResource("static/images/uploads").toString()
                 // remove file:/ from the beginning
                 .substring(6);
-        System.out.println("upload location is: " +uploadLocation);
-        System.out.println("but it should be: "+System.getProperty("user.dir")+"\\build\\resources\\main\\static\\images\\uploads\\");
         String fileName = file.getOriginalFilename();
-        System.out.println("The image name is "+ fileName);
         ImagesEntity image = new ImagesEntity();
-
-        image.setImageLocation(
-                "images/uploads/"
-                        +fileName);
+        image.setImageLocation("images/uploads/" +fileName);
         if (fileName.isEmpty()){
-            image =imageRepository.findById(1);//+=new Random().nextInt();
-            fileName= image.getImageLocation().replace(    "images/uploads/","");
-        }else {
+            image =getImageById(1);
+            fileName= image.getImageLocation().replace("images/uploads/","");
+        }
+        else {
             fileName = fileName.hashCode()+"name"+fileName.substring(fileName.lastIndexOf('.'));
             String Path_01 = System.getProperty("user.dir")+"\\build\\resources\\main\\static\\images\\uploads\\";
             try (OutputStream os = new FileOutputStream(Path_01+fileName)) {
                 os.write(file.getBytes());
             }
         }
-
         ImagesEntity img1;
-        image.setImageLocation(
-                "images/uploads/"
-                        +fileName);
+        image.setImageLocation("images/uploads/"+fileName);
         var asd = imageRepository.findFirstByImageLocationEndingWith(fileName);
         if (asd.isEmpty()){
+         img1 = imageRepository.saveAndFlush(image);
 
-
-                img1 = imageRepository.saveAndFlush(image);
-
-        }else {
+        }
+        else {
             img1 = asd.get();
         }
        return img1;

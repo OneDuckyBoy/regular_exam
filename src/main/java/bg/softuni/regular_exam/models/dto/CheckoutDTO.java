@@ -7,10 +7,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 
 public class CheckoutDTO {
+    public CheckoutDTO() {
+    }
+
+    public CheckoutDTO(String name, String address, String number) {
+        this.name = name;
+        this.address = address;
+        this.number = number;
+    }
 
     @NotBlank(message = "the name can not be empty")
     @Length(min =2, message = "Name should be more than 2 characters!")
