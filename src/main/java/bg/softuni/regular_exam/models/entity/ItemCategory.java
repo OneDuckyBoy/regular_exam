@@ -13,8 +13,8 @@ import java.util.List;
 @Entity
 @Table(name = "categories")
 
-@Getter
-@Setter
+//@Getter
+//@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemCategory extends BaseEntity{
@@ -25,4 +25,20 @@ public class ItemCategory extends BaseEntity{
     @OneToMany(mappedBy = "category")
 
     private List<ItemEntity> item;
+
+    public CategoriesEnum getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoriesEnum category) {
+        this.category = category;
+    }
+
+    public List<ItemEntity> getItem() {
+        return item;
+    }
+
+    public void setItem(List<ItemEntity> item) {
+        this.item = item;
+    }
 }

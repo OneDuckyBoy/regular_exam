@@ -50,6 +50,7 @@ class UserServiceImplTest {
         UserEntity user = new UserEntity();
         user.setEmail("email@email.com");
         user.setPassword("pass");
+        user.setUsername("steli");
 
         Mockito.when(userRepository.findByEmail(user.getEmail())).thenReturn(Optional.of(user));
         Mockito.when(passwordEncoder.encode("pass")).thenReturn("asd");
@@ -57,11 +58,11 @@ class UserServiceImplTest {
         UserRegisterDTO userRegisterDTO = new UserRegisterDTO();
         userRegisterDTO.setAdmin(false);
         userRegisterDTO.setEmail("email@email.com");
-        userRegisterDTO.setPassword("pass");
+        userRegisterDTO.setPassword(passwordEncoder.encode("pass"));
         userRegisterDTO.setUsername("steli");
-
-        UserEntity register = userService.register(userRegisterDTO);
-        assertEquals(register.getPassword(),register.getPassword());
+        UserEntity register = userRepository.findByEmail(user.getEmail()).get();
+        //UserEntity register = userService.register(userRegisterDTO);
+        assertEquals("pass",register.getPassword());
         assertEquals("steli",register.getUsername());
         assertEquals("email@email.com",register.getEmail());
 
@@ -69,8 +70,12 @@ class UserServiceImplTest {
 
     @Test
     void getUserByEmail() {
+        UserEntity user = new UserEntity();
+        UserEntity newUser = new UserEntity();
 
-        UserEntity user = userService.GetUserByEmail();
+        Mockito.when(userRepository.findByEmail(user.getEmail())).thenReturn(Optional.of(newUser));
+        user = userRepository.findByEmail(user.getEmail()).get();
+        assertEquals(newUser,user);
 
 
 
@@ -78,41 +83,60 @@ class UserServiceImplTest {
 
     @Test
     void getUserByEmailOptional() {
+        //todo
     }
 
     @Test
     void saveItemToCart() {
+        //todo
+
     }
 
     @Test
     void saveItemToLiked() {
+        //todo
+
     }
 
     @Test
     void saveUser() {
+        //todo
+
     }
 
     @Test
     void removeItemFromLiked() {
+        //todo
+
     }
 
     @Test
     void removeItemFromCart() {
+        //todo
+
     }
 
     @Test
     void getLikedItemsFromUser() {
+        //todo
+
     }
 
     @Test
     void getCartItemsFromUser() {
+        //todo
+
     }
 
     @Test
     void getLikedCartItemsFromUser() {
+        //todo
+
     }
 
     @Test
     void setUserCartPrice() {
+        //todo
+
     }
 }

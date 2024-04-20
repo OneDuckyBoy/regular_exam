@@ -20,7 +20,7 @@ public class LoggedOutInterceptor implements HandlerInterceptor {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         System.out.println();
         if (auth.getPrincipal().equals("anonymousUser")){
-            response.sendRedirect("error");
+            response.sendRedirect("/error");
             return false;
         }
 

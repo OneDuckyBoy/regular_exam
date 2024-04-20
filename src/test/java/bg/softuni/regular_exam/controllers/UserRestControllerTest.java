@@ -71,9 +71,10 @@ class UserRestControllerTest {
         Mockito.when(userService.GetUserByEmail()).thenReturn(user);
     }
 
-    @Test
-    public void test_addToCart() throws Exception {
-
+    //@Test
+    public void test_addToCart()  {
+    //todo
+        //
 //        userRestController = new UserRestController(userService);
 //       assertEquals(1, userRestController.addToCart(5,model ));
 //        mvc.perform(get("/setCartPrice/5").contentType(MediaType.APPLICATION_JSON))

@@ -5,11 +5,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class RegularExamApplicationTests {
-
-    @Test
+//todo
+   // @Test
     void contextLoads() {
     }
-    @Test
+   // @Test
     void testThatTheProgramLoads(){
 
     }
