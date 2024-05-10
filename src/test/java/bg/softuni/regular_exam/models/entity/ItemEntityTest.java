@@ -14,6 +14,18 @@ class ItemEntityTest {
     }
 
     @Test
+    void TestConstructorWithParameters(){
+        ItemEntity item1 = new ItemEntity("test",20,"asd", new ImagesEntity(), new ItemCategory());
+        assertEquals(item1.getName(),"test");
+    }
+
+    @Test
+    void SetId(){
+        item.setId(1L);
+        assertEquals(item.getId(), 1L);
+    }
+
+    @Test
     void setName() {
         item.setName("test");
         assertEquals("test", item.getName());

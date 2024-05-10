@@ -33,11 +33,11 @@ public class UserDetailsServiceImpl implements  UserDetailsService {
         return User
                 .withUsername(userEntity.getEmail())
                 .password(userEntity.getPassword())
-                .authorities(userEntity.getRoles().stream().map(UserDetailsServiceImpl::map).toList())
+                .authorities(userEntity.getRoles().stream().map(UserDetailsServiceImpl::map1).toList())
                 .build();
     }
 
-    private static GrantedAuthority map(UserRoleEntity userRoleEntity) {
+    public static GrantedAuthority map1(UserRoleEntity userRoleEntity) {
         return new SimpleGrantedAuthority(
                 "ROLE_"+userRoleEntity.getRole().name());
     }

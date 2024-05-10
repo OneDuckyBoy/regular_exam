@@ -1,6 +1,8 @@
 package bg.softuni.regular_exam.services.impl;
 
 import bg.softuni.regular_exam.models.entity.UserEntity;
+import bg.softuni.regular_exam.models.entity.UserRoleEntity;
+import bg.softuni.regular_exam.models.enums.UserRoleEnum;
 import bg.softuni.regular_exam.repositories.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,12 +11,16 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
 
+import static bg.softuni.regular_exam.services.impl.UserDetailsServiceImpl.map;
+import static bg.softuni.regular_exam.services.impl.UserDetailsServiceImpl.map1;
+import static org.junit.Assert.assertEquals;
 import static reactor.core.publisher.Mono.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -58,6 +64,13 @@ class UserDetailsServiceImplTest {
 
     }
 
+    @Test
+    public void testMap() {
+        UserRoleEntity role = new UserRoleEntity();
+        role.setRole(UserRoleEnum.ADMIN);
+        GrantedAuthority authority = map1(role);
+        Assertions.assertEquals("ROLE_ADMIN", authority.getAuthority());
 
+    }
 
 }

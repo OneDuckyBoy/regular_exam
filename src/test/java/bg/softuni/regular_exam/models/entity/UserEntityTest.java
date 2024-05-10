@@ -17,6 +17,11 @@ class UserEntityTest {
         user = new UserEntity();
     }
     @Test
+    void TestConstructorWithParameters(){
+        UserEntity user1 = new UserEntity("test", "test2");
+        assertEquals(user1.getEmail(),"test");
+    }
+    @Test
     void setEmail() {
         user.setEmail("test");
         assertEquals("test",user.getEmail());

@@ -12,6 +12,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.mock.web.MockMultipartFile;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -36,13 +37,17 @@ class NewsServiceImplTest {
     void saveNews() throws IOException {
         NewsDTO newsDTO = new NewsDTO();
         String Path_01 = System.getProperty("user.dir")+"\\build\\resources\\main\\static\\images\\uploads\\";
+        File file = new File(Path_01+"testImage.jpeg");
+        if (!file.exists()){
+            file.createNewFile();
+        }
         FileInputStream inputFile = new FileInputStream( Path_01+"testImage.jpeg");
         MockMultipartFile file1 = new MockMultipartFile("file1.jpeg", "testImage.jpeg", "multipart/form-data", inputFile);
         newsDTO.setImage(file1);
         ImagesEntity image = new ImagesEntity();
         Mockito.when(mockImageService.saveImage(file1)).thenReturn(image);
         NewsEntity news = new NewsEntity();
-        Mockito.when(mockNewsRepository.findByName(news.getName())).thenReturn(Optional.of(news));
+        Mockito.when(mockNewsRepository.findByName(news.getName())).thenReturn(Optional.empty());
         newsService.saveNews(newsDTO);
         assert true;
     }

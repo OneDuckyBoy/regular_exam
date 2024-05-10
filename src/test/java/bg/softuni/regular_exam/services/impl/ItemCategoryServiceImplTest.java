@@ -12,6 +12,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 
@@ -28,11 +29,22 @@ class ItemCategoryServiceImplTest {
     }
     @Test
     void findByCategoryName() {
-        ItemCategory category = new ItemCategory();
-        category.setCategory(CategoriesEnum.LEDs);
-        Mockito.when(mockItemCategoryRepository.findByCategory(CategoriesEnum.LEDs)).thenReturn(category);
-        ItemCategory newCategory = (mockItemCategoryRepository.findByCategory(CategoriesEnum.LEDs));
-        assertEquals(newCategory,category);
+//        ItemCategory category = new ItemCategory();
+//        category.setCategory(CategoriesEnum.LEDs);
+//        when(mockItemCategoryRepository.findByCategory(CategoriesEnum.LEDs)).thenReturn(category);
+//        ItemCategory newCategory = (mockItemCategoryRepository.findByCategory(CategoriesEnum.LEDs));
+//        assertEquals(newCategory,category);
 
+
+        CategoriesEnum category = CategoriesEnum.LEDs;
+        ItemCategory expectedCategory = new ItemCategory();
+        expectedCategory.setCategory(category);
+        when(mockItemCategoryRepository.findByCategory(category)).thenReturn(expectedCategory);
+
+        // When
+        ItemCategory result = itemCategoryService.findByCategoryName(category);
+
+        // Then
+        assertEquals(expectedCategory, result);
     }
 }

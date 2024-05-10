@@ -77,7 +77,6 @@ public class UserServiceImpl implements UserService {
     public void removeItemsFromCart() {
         UserEntity user = GetUserByEmail();
         var list= new ArrayList<ItemEntity>();
-
         user.setItemsInCart(list);
         userRepository.save(user);
     }
@@ -161,12 +160,7 @@ public class UserServiceImpl implements UserService {
                     x.add(item);
                 }
             }
-//            if (present){
-//
-//            }
         }
-//        likedItemsInCart.retainAll(user.getLikedItems());
-        System.out.println();
         return x;
     }
 

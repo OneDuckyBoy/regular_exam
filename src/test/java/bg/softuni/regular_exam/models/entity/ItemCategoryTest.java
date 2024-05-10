@@ -38,4 +38,18 @@ class ItemCategoryTest {
         assertEquals(list, category.getItem());
 
     }
+
+    @Test
+    void getCategory() {
+
+        category.setCategory(CategoriesEnum.LEDs);
+        assertEquals(CategoriesEnum.LEDs,category.getCategory());
+    }
+
+    @Test
+    void getItem() {
+        List<ItemEntity> list = new ArrayList<>();
+        category.setItem(list);
+        assertEquals(list, category.getItem());
+    }
 }

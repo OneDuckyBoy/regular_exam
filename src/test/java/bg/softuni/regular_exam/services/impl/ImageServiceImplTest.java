@@ -40,6 +40,10 @@ class ImageServiceImplTest {
     void saveImage() throws IOException {
         //Mockito.when().thenReturn();
         String Path_01 = System.getProperty("user.dir")+"\\build\\resources\\main\\static\\images\\uploads\\";
+        File file2 = new File(Path_01+"testImage.jpeg");
+        if (!file2.exists()){
+            file2.createNewFile();
+        }
         FileInputStream inputFile = new FileInputStream( Path_01+"testImage.jpeg");
         MockMultipartFile file1 = new MockMultipartFile("file1.jpeg", "testImage.jpeg", "multipart/form-data", inputFile);
         imageService.saveImage(file1);
