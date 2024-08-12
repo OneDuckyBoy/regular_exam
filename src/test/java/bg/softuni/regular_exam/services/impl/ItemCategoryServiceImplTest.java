@@ -47,4 +47,12 @@ class ItemCategoryServiceImplTest {
         // Then
         assertEquals(expectedCategory, result);
     }
+    @Test
+    void saveCategory() {
+        ItemCategory itemCategory = new ItemCategory();
+        itemCategory.setCategory(CategoriesEnum.LEDs);
+        itemCategoryService.saveCategory(itemCategory);
+        assertEquals(CategoriesEnum.LEDs, itemCategory.getCategory());
+
+    }
 }

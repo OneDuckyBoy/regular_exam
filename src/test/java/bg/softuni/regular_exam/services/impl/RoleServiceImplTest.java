@@ -1,6 +1,8 @@
 package bg.softuni.regular_exam.services.impl;
 
+import bg.softuni.regular_exam.models.entity.ItemCategory;
 import bg.softuni.regular_exam.models.entity.UserRoleEntity;
+import bg.softuni.regular_exam.models.enums.CategoriesEnum;
 import bg.softuni.regular_exam.models.enums.UserRoleEnum;
 import bg.softuni.regular_exam.repositories.RoleRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,5 +38,13 @@ class RoleServiceImplTest {
 
         UserRoleEntity newRole= roleService.getRoleFromEnum(UserRoleEnum.USER);
         assertEquals(newRole,role);
+    }
+    @Test
+    void addRole() {
+        UserRoleEntity role = new UserRoleEntity();
+        role.setRole(UserRoleEnum.USER);
+        roleService.addRole(role);
+        assertEquals(UserRoleEnum.USER, role.getRole());
+
     }
 }
