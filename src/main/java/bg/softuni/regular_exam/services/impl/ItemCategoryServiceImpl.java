@@ -18,4 +18,9 @@ public class ItemCategoryServiceImpl implements ItemCategoryService {
     public ItemCategory findByCategoryName(CategoriesEnum category) {
         return categoryRepository.findByCategory(category);
     }
+
+    @Override
+    public void saveCategory(ItemCategory itemCategory) {
+        categoryRepository.save(itemCategory);
+    }
 }
