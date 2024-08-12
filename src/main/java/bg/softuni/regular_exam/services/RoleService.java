@@ -5,4 +5,7 @@ import bg.softuni.regular_exam.models.enums.UserRoleEnum;
 
 public interface RoleService {
     UserRoleEntity getRoleFromEnum(UserRoleEnum role);
+
+    void addRole(UserRoleEntity role);
+    long getRoleCount();
 }

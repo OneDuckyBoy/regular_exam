@@ -9,9 +9,11 @@ import bg.softuni.regular_exam.repositories.UserRepository;
 import bg.softuni.regular_exam.services.RoleService;
 import bg.softuni.regular_exam.services.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -25,17 +27,17 @@ public class UserServiceImpl implements UserService {
     private final ModelMapper modelMapper;
 
     private final RoleService roleService;
-
+@Autowired
     public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper, RoleService roleService) {
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
+        this.passwordEncoder = Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8();;
         this.modelMapper = modelMapper;
         this.roleService = roleService;
     }
     @Override
     public UserEntity register(UserRegisterDTO model) {
-
-        model.setPassword(passwordEncoder.encode(model.getPassword()));
+        String newPassword = passwordEncoder.encode(model.getPassword());
+        model.setPassword(newPassword);
         UserEntity user = modelMapper.map(model, UserEntity.class);
         modelMapper.map(model, user);
         UserRoleEntity roleUser = roleService.getRoleFromEnum(UserRoleEnum.USER);
@@ -45,9 +47,10 @@ public class UserServiceImpl implements UserService {
             user.AddRole(roleAdmin);
         }
 
-//        System.out.println();
-        if (userRepository.findByEmail(user.getEmail()).isEmpty()){
-            userRepository.save(user);
+        System.out.println();
+        boolean userExists = userRepository.findByEmail(user.getEmail()).isPresent();
+        if (!userExists){
+           user= userRepository.save(user);
         }
         return user;
     }
@@ -170,6 +173,5 @@ public class UserServiceImpl implements UserService {
         user.setCartPrice(price);
 
         userRepository.save(user);
-
     }
 }

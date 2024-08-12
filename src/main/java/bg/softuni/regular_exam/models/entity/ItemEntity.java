@@ -9,21 +9,21 @@ import lombok.Setter;
 import java.lang.reflect.Type;
 
 @Entity
-    @Table(name = "items")
-    public class ItemEntity extends BaseEntity {
-        @Column(name = "name")
-        private String name;
+@Table(name = "items")
+public class ItemEntity extends BaseEntity {
+    @Column(name = "name")
+    private String name;
 
-        private double price;
-        @Column()
-        private String description;
-        @ManyToOne
-        @JoinColumn(name = "image_id")
-        private ImagesEntity image;
+    private double price;
+    @Column()
+    private String description;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "image_id")
+    private ImagesEntity image;
 
-        @ManyToOne()
-        @JoinColumn(name = "category_id")
-        private ItemCategory category;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
+    private ItemCategory category;
 
     public ItemEntity() {
     }

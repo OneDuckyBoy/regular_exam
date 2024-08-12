@@ -2,6 +2,7 @@ package bg.softuni.regular_exam.models.entity;
 
 import bg.softuni.regular_exam.models.enums.CategoriesEnum;
 import bg.softuni.regular_exam.models.enums.UserRoleEnum;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +24,7 @@ public class ItemCategory extends BaseEntity{
     private CategoriesEnum category;
 
     @OneToMany(mappedBy = "category")
-
+    @JsonBackReference
     private List<ItemEntity> item;
 
     public CategoriesEnum getCategory() {

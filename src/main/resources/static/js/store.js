@@ -5,8 +5,8 @@ let likedItems;
 
 
 
-getIfItemIsLiked("1234"+4)
-function  getIfItemIsLiked(id){
+getIfItemIsLiked();
+function  getIfItemIsLiked(){
     let items;
     let liked ;
      // id = id.substring(5)
@@ -83,11 +83,12 @@ function test(items,likedItems){
 // container.innerHTML = 'hi';
 
         let category= new URL (location.href).searchParams.get('category')
-// console.log(category)
+        console.log(items)
 //     getIfItemIsLiked();
 
         items.forEach(item =>{
             console.log(item)
+            console.log("Hi")
             let imagePath = item.image.imageLocation;
             let name = item.name;
             let price = item.price;
@@ -95,7 +96,7 @@ function test(items,likedItems){
                 "item/"+
                 item.id;
             console.log(category)
-            if (item.category.id==category) {
+            if (item.category.id===category) {
                 console.log(id)
                 // imagePath,item,price,url,id,item
                 addItem(imagePath, name, price, id, id, item);

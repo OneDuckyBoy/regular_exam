@@ -19,7 +19,7 @@ public class NewsEntity extends BaseEntity{
     private String name;
     @Column
     private String description;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "image_id")
     private ImagesEntity image;
 

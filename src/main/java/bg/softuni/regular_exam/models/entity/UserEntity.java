@@ -53,6 +53,7 @@ public class UserEntity extends BaseEntity{
     }
 
 
+    @OneToMany
     public List<UserRoleEntity> getRoles() {
         return roles;
     }

@@ -12,8 +12,8 @@ import java.util.Optional;
 @SpringBootApplication
 public class RegularExamApplication {
 
-    //todo to use SOLID principles
     public static void main(String[] args) {
+
         SpringApplication.run(RegularExamApplication.class, args);
     }
 

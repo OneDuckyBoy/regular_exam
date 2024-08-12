@@ -18,4 +18,14 @@ public class RoleServiceImpl implements RoleService {
     public UserRoleEntity getRoleFromEnum(UserRoleEnum role){
         return roleRepository.findByRole(role);
     }
+
+    @Override
+    public void addRole(UserRoleEntity role) {
+        roleRepository.save(role);
+    }
+
+    @Override
+    public long getRoleCount() {
+        return roleRepository.count();
+    }
 }
