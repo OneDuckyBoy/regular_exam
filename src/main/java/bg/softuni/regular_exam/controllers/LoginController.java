@@ -23,7 +23,7 @@ public class LoginController {
 
         model.addAttribute("email", email);
         model.addAttribute("bad_credentials", "true");
-
+        System.out.println("error 01");
         return "login";
     }
 

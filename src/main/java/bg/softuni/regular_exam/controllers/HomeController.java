@@ -5,6 +5,9 @@ import bg.softuni.regular_exam.models.entity.UserEntity;
 import bg.softuni.regular_exam.schedule.Theme;
 import bg.softuni.regular_exam.services.ItemService;
 import bg.softuni.regular_exam.services.UserService;
+import bg.softuni.regular_exam.services.impl.ItemServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -16,12 +19,15 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
+@ComponentScan("{bg.softuni.regular_exam.services.impl.ItemServiceImpl, bg.softuni.regular_exam.controllers.HomeController}")
+@ComponentScan(basePackages={"bg.softuni.regular_exam.services.impl.ItemServiceImpl"})
 public class HomeController {
 
     private final UserService userService;
-    private final ItemService itemService;
+    private final ItemServiceImpl itemService;
 
-    public HomeController(UserService userService, ItemService itemService) {
+    @Autowired
+    public HomeController(UserService userService, ItemServiceImpl itemService) {
         this.userService = userService;
         this.itemService = itemService;
     }

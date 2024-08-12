@@ -1,10 +1,13 @@
 package bg.softuni.regular_exam.controllers;
 
 import bg.softuni.regular_exam.models.entity.ItemEntity;
-import bg.softuni.regular_exam.models.entity.UserEntity;
 import bg.softuni.regular_exam.schedule.Theme;
 import bg.softuni.regular_exam.services.impl.ItemServiceImpl;
 import bg.softuni.regular_exam.services.impl.UserServiceImpl;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.Hibernate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,14 +18,19 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("rest")
+@ComponentScan("{bg.softuni.regular_exam.services.impl.ItemServiceImpl, bg.softuni.regular_exam.controllers.ItemRestController}")
+@ComponentScan(basePackages={"bg.softuni.regular_exam.services.impl.ItemServiceImpl"})
 public class ItemRestController {
-    private final ItemServiceImpl itemService;
+
+
     private final UserServiceImpl userService;
+    private final ItemServiceImpl itemService;
 
-
+    @Autowired
     public ItemRestController(ItemServiceImpl itemService, UserServiceImpl userService) {
-        this.itemService = itemService;
+
         this.userService = userService;
+        this.itemService = itemService;
     }
 
     @GetMapping(path = "/getItem/{id}",produces = "application/json")
@@ -30,7 +38,9 @@ public class ItemRestController {
 
 
         return itemService.getItem(id);
-    }@GetMapping(path = "/getIfItemIsLiked/{id}",produces = "application/json")
+    }
+
+    @GetMapping(path = "/getIfItemIsLiked/{id}",produces = "application/json")
     public boolean getIfItemIsLiked(@PathVariable("id") Long id){
 
         List<ItemEntity> likedItems = userService.GetUserByEmail().getLikedItems();
@@ -58,12 +68,13 @@ public class ItemRestController {
 
 
 
+    //@JsonBackReference
     @GetMapping(path = "/getAllItems",produces = "application/json")
     public List<ItemEntity> getAllItems(){
-
-
         return itemService.getAllItems();
-    } @GetMapping(path = "/getItemsInCart",produces = "application/json")
+    }
+
+    @GetMapping(path = "/getItemsInCart",produces = "application/json")
     public List<ItemEntity> getItemsInCart(){
 
 

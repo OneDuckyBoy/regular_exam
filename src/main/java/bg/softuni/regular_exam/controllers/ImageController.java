@@ -30,10 +30,6 @@ public class ImageController {
 
     @PostMapping("/image")
     public String img(@RequestParam("imageFile")MultipartFile imageFile){
-
-//        storageService.save(imageFile);
-
-        System.out.println("test 123123123 asdasdasd");
         return "redirect:/";
     }
 
