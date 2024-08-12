@@ -38,10 +38,6 @@ public class CheckoutController {
             model.addAttribute("price",
                     price);
         }
-
-
-
-
         return mv;
     }
     @GetMapping("/cart")
