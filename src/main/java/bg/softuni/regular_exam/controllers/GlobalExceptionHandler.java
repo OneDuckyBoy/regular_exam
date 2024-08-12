@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @ControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler( ForbiddenException.class)
-    public ModelAndView handleDatabaseErrors(ForbiddenException e) {
+    public static ModelAndView handleDatabaseErrors(ForbiddenException e) {
         ModelAndView modelAndView = new ModelAndView("error");
         modelAndView.addObject("message", e.getMessage());
 
