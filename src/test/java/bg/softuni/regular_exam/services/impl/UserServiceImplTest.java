@@ -18,6 +18,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,13 +45,33 @@ class UserServiceImplTest {
     @Mock
     private  RoleService roleService;
 
-
+    UserEntity expectedUser = new UserEntity();
+    String userEmail = "test@example.com";
     @BeforeEach
     void Setup(){
 
         modelMapper = new ModelMapper();
 
         userService = new UserServiceImpl(userRepository,passwordEncoder,modelMapper,roleService);
+
+
+        //SetGetUserByEmail();
+
+    }
+
+    private void SetGetUserByEmail() {
+        expectedUser = new UserEntity();
+        expectedUser.setCartPrice(0L);
+        expectedUser.setEmail(userEmail);
+
+        Authentication authentication = mock(Authentication.class);
+        when(authentication.getName()).thenReturn(userEmail);
+
+        SecurityContext securityContext = mock(SecurityContext.class);
+        when(securityContext.getAuthentication()).thenReturn(authentication);
+        SecurityContextHolder.setContext(securityContext);
+
+        when(userRepository.findByEmail(userEmail)).thenReturn(Optional.of(expectedUser));
     }
 
     @Test
@@ -61,7 +82,9 @@ class UserServiceImplTest {
         userRegisterDTO.setEmail("test@example.com");
         userRegisterDTO.setPassword("password");
         userRegisterDTO.setAdmin(true);
-        when(passwordEncoder.encode("password")).thenReturn("encodedPassword");
+        when(passwordEncoder.encode("password")).thenReturn("newPass");
+
+        String encodedPassword = passwordEncoder.encode(userRegisterDTO.getPassword());
 
         // Stubbing for roleService.getRoleFromEnum()
         UserRoleEntity userRole =new UserRoleEntity();
@@ -86,7 +109,7 @@ class UserServiceImplTest {
         // Then
         assertNotNull(result);
         assertEquals("test@example.com", result.getEmail());
-        assertEquals("encodedPassword", result.getPassword());
+        assertEquals(encodedPassword, result.getPassword());
         // Add more assertions as needed
 
     }
@@ -116,19 +139,19 @@ class UserServiceImplTest {
 
     @Test
     void getUserByEmail() {
-        String userEmail = "test@example.com";
-        UserEntity expectedUser = new UserEntity();
-        expectedUser.setEmail(userEmail);
-
-        Authentication authentication = mock(Authentication.class);
-        when(authentication.getName()).thenReturn(userEmail);
-
-        SecurityContext securityContext = mock(SecurityContext.class);
-        when(securityContext.getAuthentication()).thenReturn(authentication);
-        SecurityContextHolder.setContext(securityContext);
-
-        when(userRepository.findByEmail(userEmail)).thenReturn(Optional.of(expectedUser));
-
+//        String userEmail = "test@example.com";
+//        UserEntity expectedUser = new UserEntity();
+//        expectedUser.setEmail(userEmail);
+//
+//        Authentication authentication = mock(Authentication.class);
+//        when(authentication.getName()).thenReturn(userEmail);
+//
+//        SecurityContext securityContext = mock(SecurityContext.class);
+//        when(securityContext.getAuthentication()).thenReturn(authentication);
+//        SecurityContextHolder.setContext(securityContext);
+//
+//        when(userRepository.findByEmail(userEmail)).thenReturn(Optional.of(expectedUser));
+        SetGetUserByEmail();
         // When
         UserEntity result = userService.GetUserByEmail();
 
@@ -255,45 +278,77 @@ class UserServiceImplTest {
     @Test
     void saveUser() {
         UserEntity user = new UserEntity();
-        UserEntity newUser = new UserEntity();
-        when(userRepository.save(user)).thenReturn(newUser);
+
+        //when(userRepository.save(user)).thenReturn(user);
         userService.saveUser(user);
 
     }
 
     @Test
     void removeItemFromLiked() {
-        //todo
+        SetGetUserByEmail();
+        ItemEntity item1 = new ItemEntity();
+
+        item1.setId(1L);
+        List<ItemEntity> items = new ArrayList<>();
+        expectedUser.setLikedItems(items);
+
+
+        userService.saveItemToLiked(item1);
+        userService.removeItemFromLiked(item1);
 
     }
 
     @Test
     void removeItemFromCart() {
-        //todo
+        SetGetUserByEmail();
+        ItemEntity item1 = new ItemEntity();
+
+        item1.setId(1L);
+        List<ItemEntity> items = new ArrayList<>();
+        expectedUser.setItemsInCart(items);
+
+
+        userService.saveItemToCart(item1);
+        userService.removeItemFromCart(item1);
 
     }
 
     @Test
     void getLikedItemsFromUser() {
-        //todo
-
+        SetGetUserByEmail();
+        List<ItemEntity> items = new ArrayList<>();
+        expectedUser.setLikedItems(items);
+        assertEquals(expectedUser.getLikedItems(), userService.GetLikedItemsFromUser());
     }
 
     @Test
     void getCartItemsFromUser() {
-        //todo
+        SetGetUserByEmail();
+        List<ItemEntity> items = new ArrayList<>();
+        expectedUser.setItemsInCart(items);
+        assertEquals(expectedUser.getItemsInCart(), userService.GetCartItemsFromUser());
 
     }
 
     @Test
     void getLikedCartItemsFromUser() {
-        //todo
+        List<ItemEntity> items = new ArrayList<>();
+        SetGetUserByEmail();
+        ItemEntity item1 = new ItemEntity();
+        items.add(item1);
+        item1.setId(1L);
+        expectedUser.setItemsInCart(items);
+        List<ItemEntity> items1 = new ArrayList<>();
+        items1.add(item1);
+        expectedUser.setLikedItems(items1);
+        assertEquals(1, userService.GetLikedCartItemsFromUser().size());
 
     }
 
     @Test
     void setUserCartPrice() {
-        //todo
-
+        SetGetUserByEmail();
+        userService.setUserCartPrice(1L);
     }
 }

@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
 @Autowired
     public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper, RoleService roleService) {
         this.userRepository = userRepository;
-        this.passwordEncoder = Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8();;
+        this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
         this.roleService = roleService;
     }
