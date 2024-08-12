@@ -4,17 +4,26 @@ import bg.softuni.regular_exam.models.entity.ImagesEntity;
 import bg.softuni.regular_exam.repositories.ImageRepository;
 import bg.softuni.regular_exam.services.ImageService;
 import com.sun.jna.platform.win32.WinUser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.swing.text.Element;
 import java.io.*;
 import java.util.Random;
+@ComponentScan({"bg.softuni.regular_exam.repositories","bg.softuni.regular_exam.repositories.imageRepository","bg.softuni.regular_exam.models.entity"})
+@ComponentScan("{bg.softuni.regular_exam.repositories,bg.softuni.regular_exam.repositories.imageRepository,bg.softuni.regular_exam.models.entity}")
 
 @Service
-public class    ImageServiceImpl implements ImageService {
+//@Component
+public class ImageServiceImpl implements ImageService {
+    @Qualifier("imageRepository")
     private final ImageRepository imageRepository;
 
+    @Autowired
     public ImageServiceImpl(ImageRepository imageRepository) {
         this.imageRepository = imageRepository;
     }
