@@ -31,6 +31,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.projectlombok:lombok:1.18.26'
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    implementation 'mysql:mysql-connector-java:5.1.6'
+
 
     implementation 'org.springframework.boot:spring-boot-starter-validation:2.4.0'
 // https://mvnrepository.com/artifact/javax.validation/validation-api
@@ -39,9 +42,7 @@ dependencies {
     implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
 // https://mvnrepository.com/artifact/org.webjars/webjars-locator-core
     implementation 'org.webjars:webjars-locator-core:0.55'
-    //testImplementation 'com.h2database:h2'
-//    implementation 'video.bug:unlogged-sdk:0.1.19'
-//    annotationProcessor 'video.bug:unlogged-sdk:0.1.19'
+    testImplementation 'com.h2database:h2'
 //    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
 //    implementation 'com.fasterxml.jackson.core:jackson-core:2.16.0'
 // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
@@ -54,6 +55,11 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.hsqldb:hsqldb'
     testImplementation'org.springframework.security:spring-security-test'
+    testImplementation 'org.mockito:mockito-core'
+    testImplementation 'org.mockito:mockito-junit-jupiter'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'com.h2database:h2:2.2.224'
+    testImplementation 'com.h2database:h2:2.2.224'
 
 }
 
