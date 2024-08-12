@@ -56,7 +56,7 @@ public class NewsController {
         return "add-news";
     }
     @PostMapping("/add-news")
-    private ModelAndView addNewsPost(
+   public ModelAndView addNewsPost(
             @Valid NewsDTO newsDTO,
             BindingResult bindingResult,
             RedirectAttributes redirectAttributes
