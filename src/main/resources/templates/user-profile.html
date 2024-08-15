@@ -86,8 +86,9 @@
         </form>
 
     </div>
-        <h1 class="">Cart
-            <hr></h1><div class="items" style="margin-top: -100px">
+
+        <h1 class="">Cart<hr></h1>
+        <div class="items" style="margin-top: -100px">
 
             <div th:each="item:${cart}" class="item-container" style="border-radius: 7px;padding: 0">
                 <i style="color: red; position: relative; left: 85px;top:25px;" class="fa-lg     fa-solid fa-heart"></i>
@@ -106,12 +107,39 @@
 
             </div>
 
-            <form th:if="${cart.size()==3}" method="get" action="liked">
+                <form th:if="${cart.size()==3}" method="get" action="cart">
+                    <button class="item-container" type="submit" style="background: white; margin: 0px; border: none;">
+                        <div href="/cart"><i class="fa-normal fa-plus fa-8x"></i></div><p>More</p>
+                    </button>
+                </form>
+        </div>
+
+        <h1 class="">Bought items<hr></h1>
+        <div class="items" style="margin-top: -100px">
+
+            <div th:each="item:${bought}" class="item-container" style="border-radius: 7px;padding: 0">
+                <i style="color: red; position: relative; left: 85px;top:25px;" class="fa-lg     fa-solid fa-heart"></i>
+                <img style="border-radius: 7px" th:src="${item.image.getImageLocation()}" alt="img">
+                <p class="name" th:text="${item.name}">ime ime ime</p>
+                <div class="item-text">
+                    <p class="price" th:text="${item.price}+' leva'">5 lev</p>
+                    <!--                    <form th:action="@{'rest/addToCart/'+${item.id}}"  method="get" target="dummyframe">-->
+                    <!--                        <button class="button-2" role="button" type="submit">Add to Cart</button></form>-->
+                </div>
+                <div class="item-text">
+                    <form th:action="@{'/RemoveFromCart/'+${item.id}}"  method="get">
+                        <button class="button-2" role="button">Remove from cart <i class=" fa fa-solid fa-xmark fa-lg " aria-hidden="true"></i ></button>
+                    </form>
+                </div>
+
+            </div>
+
+            <form th:if="${bought.size()==3}" method="get" action="bought">
                 <button class="item-container" type="submit" style="background: white; margin: 0px; border: none;">
-                    <div href="/cart    "><i class="fa-normal fa-plus fa-8x"></i></div><p>More</p>
+                    <div href="/bought"><i class="fa-normal fa-plus fa-8x"></i></div><p>More</p>
                 </button>
             </form>
-    </div>
+        </div>
 <!--        <h1 class="text-light">Bought items-->
 <!--            <hr></h1><div class="items" style="margin-top: -100px">-->
 

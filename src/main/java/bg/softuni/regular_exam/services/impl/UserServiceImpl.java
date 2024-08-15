@@ -174,4 +174,19 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(user);
     }
+
+    @Override
+    public void BuyItemsFromCart() {
+        UserEntity user = GetUserByEmail();
+//        List<ItemEntity> itemsInCart = user.getItemsInCart();
+        user.getItemsInCart().forEach(user::AddToBoughtItems);
+        userRepository.save(user);
+    }
+    @Override
+    public List<ItemEntity> getBoughtItems(){
+        UserEntity user = GetUserByEmail();
+        List<ItemEntity> boughtItems = user.getBoughtItems();
+
+        return boughtItems;
+    }
 }

@@ -55,6 +55,8 @@ public class UserProfileController {
                     liked);
         }
 
+
+
         List<ItemEntity> allCart = userService.GetCartItemsFromUser().stream()
                 .distinct()
                 .toList();
@@ -76,6 +78,29 @@ public class UserProfileController {
             model.addAttribute("cart",
                     cart);
         }
+
+        List<ItemEntity> allBought = userService.getBoughtItems().stream()
+                .distinct()
+                .toList();
+        List<ItemEntity> bought = new ArrayList<>();
+
+        if (!allBought.isEmpty()){
+            int counter =0;
+
+            for (ItemEntity itemEntity : allBought) {
+                counter++;
+                bought.add(itemEntity);
+                if (counter == 3) {
+                    break;
+                }
+            }
+
+        }
+        if(!model.containsAttribute("bought")){
+            model.addAttribute("bought",
+                    bought);
+        }
+
         Optional<UserEntity> userEntity = userService.GetUserByEmailOptional();
         boolean present = userEntity.isPresent();
         model.addAttribute("present",present);

@@ -1,5 +1,6 @@
 package bg.softuni.regular_exam.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -110,6 +111,14 @@ public class UserEntity extends BaseEntity{
         this.itemsInCart = itemsInCart;
     }
 
+    public List<ItemEntity> getBoughtItems() {
+        return boughtItems;
+    }
+
+    public void setBoughtItems(List<ItemEntity> boughtItems) {
+        this.boughtItems = boughtItems;
+    }
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
 
@@ -120,13 +129,33 @@ public class UserEntity extends BaseEntity{
     )
     private List<ItemEntity> itemsInCart;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+
+            name = "users_bought_items",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "bought_items_id")
+
+    )
+    @JsonBackReference
+    private List<ItemEntity> boughtItems;
+
+    public void AddToBoughtItems(ItemEntity item){
+        if (!boughtItems.contains(item))
+            boughtItems.add(item);
+    }public void removeFromBoughtItems(ItemEntity item){
+        if (boughtItems.contains(item))
+            boughtItems.remove(item);
+    }
+
     public void AddToCart(ItemEntity item){
         if (!itemsInCart.contains(item))
         itemsInCart.add(item);
     }public void removeFromCart(ItemEntity item){
         if (itemsInCart.contains(item))
         itemsInCart.remove(item);
-    }public void AddToLiked(ItemEntity item){
+    }
+    public void AddToLiked(ItemEntity item){
         if (!likedItems.contains(item))
         likedItems.add(item);
     }public void removeFromLiked(ItemEntity item){

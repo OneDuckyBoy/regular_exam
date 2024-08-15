@@ -73,7 +73,9 @@ public class CheckoutController {
             return new ModelAndView("/checkout");
         }
 
+        userService.BuyItemsFromCart();
         userService.removeItemsFromCart();
+
         userService.setUserCartPrice(0);
         return mv;
     }

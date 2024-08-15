@@ -72,6 +72,19 @@ public class HomeController {
 
         return "liked";
     }
+    @GetMapping("/bought")
+    public String bought(Model model){
+        model.addAttribute("darkTheme", Theme.darkTheme);
+
+        List<ItemEntity> bought = userService.getBoughtItems();
+
+        if(!model.containsAttribute("bought")){
+            model.addAttribute("bought",
+                    bought);
+        }
+
+        return "bought";
+    }
 
 
     @GetMapping("/item")///${id}

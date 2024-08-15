@@ -1,0 +1,75 @@
+
+
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>Duck marketplace</title>
+    <link rel="stylesheet" th:href="@{/css/reset-css.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+    <script th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="https://kit.fontawesome.com/734a4e4265.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Item.css}"/>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/category.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/liked.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/liked-page.css}"/>
+
+
+
+
+
+    <script th:src="@{/js/liked.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/store.css}"/>
+
+</head>
+<body th:class="'base '+${darkTheme ? 'background-dark text-light' : 'background-light '}">
+<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+
+<div class="store-container ">
+    <div class="navbar"><nav th:replace="~{fragments/navbar}"></nav></div>
+    <div class="shop-categories " >
+        <br><br><br>
+        <div class="container-liked-page-user-info ">
+            <div class="picture" >
+                <img style="
+                /*margin-top: 60px;margin-left: 50px;*/
+                width: 300px;border-radius: 1000px" src="images/uploads/ducki the duck.jpg" alt="">
+                </div>
+            <div class="email"><th:block sec:authentication="name" >asd</th:block> </div>
+            <div  class="line"><hr/></div>
+            <div class="liked-items-text"><h1>Liked items</h1></div>
+        </div>
+    </div>
+    <div class="shop-items"><div class="items">
+
+        <div th:each="item:${bought}" class="item-container" style="border-radius: 7px;padding: 0">
+            <i style="color: red; position: relative; left: 85px;top:25px;" class="fa-lg     fa-solid fa-heart"></i>
+            <img style="border-radius: 7px" th:src="${item.image.getImageLocation()}" alt="img">
+            <p class="name" th:text="${item.name}">ime ime ime</p>
+            <div class="item-text">
+                <p class="price" th:text="${item.price}+' leva'">5 leva</p>
+                <form th:action="@{'rest/addToCart/'+${item.id}}"  method="get" target="dummyframe">
+                <button class="button-2" role="button" type="submit">Add to Cart</button></form>
+            </div>
+            <div class="item-text">
+                <form th:action="@{'/RemoveFromLikedInLikedPage/'+${item.id}}"  method="get">
+                    <button class="button-2" role="button">Remove from Liked <i class=" fa fa-solid fa-xmark fa-lg " aria-hidden="true"></i ></button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+</div>
+
+
+
+</body>
+</html>

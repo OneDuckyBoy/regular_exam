@@ -33,4 +33,7 @@ public interface UserService {
     List<ItemEntity> GetLikedCartItemsFromUser();
 
     void setUserCartPrice(double price);
+
+    void BuyItemsFromCart();
+    List<ItemEntity> getBoughtItems();
 }
