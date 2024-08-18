@@ -53,10 +53,10 @@ public class ItemUploadController {
     }
 
     @PostMapping("/add-item")
-    private ModelAndView addItemPost(
-                                     @Valid ItemDTO itemDTO,
-                                     BindingResult bindingResult,
-                                     RedirectAttributes redirectAttributes
+    public ModelAndView addItemPost(
+            @Valid ItemDTO itemDTO,
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes
 
     ) throws IOException {
 //        MultipartFile file = itemDTO.getImage();
